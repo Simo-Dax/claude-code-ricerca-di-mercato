@@ -8,9 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
 <style>
-  /* ===== Airbnb design tokens ===== */
+  /* ===== design tokens ===== */
   :root{
-    --rausch:#FF385C;       /* Airbnb primary */
+    --rausch:#FF385C;
     --rausch-dark:#E00B41;
     --hof:#222222;          /* ink */
     --foggy:#717171;        /* muted */
@@ -19,9 +19,9 @@
     --line:#DDDDDD;
     --line-soft:#EBEBEB;
     --hover:#F7F7F7;
-    --tof:#008489;          /* teal */
-    --mof:#914669;          /* plum */
-    --bof:#E07912;          /* amber */
+    --tof:#008489;
+    --mof:#914669;
+    --bof:#E07912;
     --proven:#008A05; --hot:#FF385C; --active:#0a7ea4; --retired:#717171; --short:#B0B0B0;
     --shadow:0 6px 16px rgba(0,0,0,.12);
     --shadow-sm:0 1px 2px rgba(0,0,0,.08);
@@ -35,34 +35,45 @@
   .logo{font-weight:800;font-size:19px;letter-spacing:-.4px;margin-bottom:3px;display:flex;align-items:center;gap:8px}
   .logo .mark{width:22px;height:22px;border-radius:50%;background:var(--rausch);display:inline-block}
   .logo span{color:var(--rausch)}
-  .sub{color:var(--foggy);font-size:12.5px;margin-bottom:26px}
-  .filter-group{margin-bottom:26px}
-  .filter-group h3{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--hof);margin-bottom:12px;font-weight:800}
-  .opt{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:12px;cursor:pointer;font-size:14px;transition:background .15s}
+  .sub{color:var(--foggy);font-size:12.5px;margin-bottom:26px;line-height:1.45}
+  .filter-group{margin-bottom:22px}
+  .filter-group h3{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--hof);margin-bottom:10px;font-weight:800}
+  .opt{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:12px;cursor:pointer;font-size:14px;transition:background .15s}
   .opt:hover{background:var(--hover)}
   .opt input{accent-color:var(--rausch);width:17px;height:17px;cursor:pointer;border-radius:6px}
   .opt .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+  .opt .lbl{line-height:1.25}
   .opt .cnt{margin-left:auto;color:var(--foggy);font-size:12.5px;font-variant-numeric:tabular-nums}
+  .opt.zero{opacity:.38}
   .reset{margin-top:6px;width:100%;padding:12px;border:1px solid var(--hof);background:var(--paper);border-radius:10px;color:var(--hof);font-size:13.5px;font-weight:700;cursor:pointer;transition:background .15s}
   .reset:hover{background:var(--hover)}
 
   /* ===== MAIN ===== */
   .main{padding:28px 36px}
-  .topbar{display:flex;align-items:center;gap:14px;margin-bottom:24px;flex-wrap:wrap}
+  .topbar{display:flex;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap}
   .search{flex:1;min-width:220px;padding:14px 20px;border:1px solid var(--line);border-radius:40px;font-size:14px;background:var(--paper);box-shadow:var(--shadow-sm);font-family:inherit;transition:box-shadow .15s}
   .search:focus{outline:none;box-shadow:var(--shadow)}
   .sortsel{padding:13px 16px;border:1px solid var(--line);border-radius:40px;background:var(--paper);font-size:13.5px;cursor:pointer;font-family:inherit;font-weight:600;box-shadow:var(--shadow-sm)}
   .count{color:var(--foggy);font-size:14px;white-space:nowrap;font-weight:600}
   .count b{color:var(--hof);font-weight:800}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;min-height:1px}
+  .chip{display:inline-flex;align-items:center;gap:7px;background:var(--hover);border:1px solid var(--line-soft);
+    border-radius:40px;padding:6px 12px;font-size:12.5px;font-weight:700;cursor:pointer}
+  .chip:hover{border-color:var(--hof)}
+  .chip b{font-weight:800}
+  .chip .x{color:var(--foggy);font-weight:800}
+  .chip.clear{background:var(--hof);color:#fff;border-color:var(--hof)}
 
-  /* ===== GRID (Airbnb listing style) ===== */
+  /* ===== GRID ===== */
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px 18px}
-  .card{background:var(--paper);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;cursor:default;transition:transform .18s}
+  .card{background:var(--paper);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;cursor:zoom-in;transition:transform .18s}
   .card:hover{transform:translateY(-3px)}
   .card:hover .thumb{box-shadow:var(--shadow)}
-  .thumb{position:relative;aspect-ratio:1/1;background:var(--hover);overflow:hidden;border-radius:14px;transition:box-shadow .18s}
+  .card:focus-visible{outline:2px solid var(--hof);outline-offset:3px;border-radius:14px}
+  .thumb{position:relative;aspect-ratio:1/1;background:var(--hover);overflow:hidden;border-radius:14px;border:1px solid var(--line-soft);transition:box-shadow .18s}
   .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-  .thumb .ph{display:flex;align-items:center;justify-content:center;height:100%;color:#c8c8c8;font-size:13px}
+  .thumb.fit img{object-fit:contain;background:#fff}
+  .thumb .ph{display:flex;align-items:center;justify-content:center;height:100%;color:#a9a9a9;font-size:13px;text-align:center;padding:0 18px;line-height:1.4}
   .tier{position:absolute;top:12px;left:12px;font-size:11.5px;font-weight:800;padding:6px 11px;border-radius:40px;background:var(--paper);color:var(--hof);box-shadow:var(--shadow-sm)}
   .tier .tdot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:middle}
   .tag.src{font-weight:800}
@@ -72,6 +83,8 @@
   .cbody{padding:12px 4px 4px;display:flex;flex-direction:column;gap:7px;flex:1}
   .chead{display:flex;align-items:center;gap:9px}
   .clogo{width:24px;height:24px;border-radius:50%;object-fit:cover;background:var(--line-soft);flex-shrink:0}
+  .clogo.ini{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;
+    color:#fff;background:var(--hof);letter-spacing:-.2px}
   .cname{font-weight:800;font-size:15px;line-height:1.2;letter-spacing:-.2px}
   .tags{display:flex;gap:7px;flex-wrap:wrap}
   .tag{font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:40px}
@@ -79,6 +92,7 @@
   .tag.fn{color:#fff}
   .tag.tof{background:var(--tof)}.tag.mof{background:var(--mof)}.tag.bof{background:var(--bof)}
   .headline{font-size:13px;color:var(--foggy);line-height:1.4;max-height:3.6em;overflow:hidden}
+  .headline.muted{font-style:italic;color:#9a9a9a}
   .kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
   .kpi{background:var(--hover);border-radius:10px;padding:9px 11px}
   .kpi .l{font-size:10.5px;color:var(--foggy);text-transform:uppercase;letter-spacing:.3px;font-weight:700}
@@ -86,12 +100,51 @@
   .clink{margin-top:auto;padding-top:6px;font-size:13px;font-weight:800;color:var(--hof);text-decoration:underline;text-underline-offset:2px}
   .clink:hover{color:var(--rausch)}
   .empty{grid-column:1/-1;text-align:center;padding:70px 20px;color:var(--foggy)}
+  .more{display:block;margin:26px auto 0;padding:13px 26px;border:1px solid var(--hof);background:var(--paper);
+    border-radius:40px;font-size:13.5px;font-weight:800;cursor:pointer;font-family:inherit}
+  .more:hover{background:var(--hover)}
   @media(max-width:820px){.app{grid-template-columns:1fr}.sidebar{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line-soft)}}
+
+  /* --- badge video --- */
+  .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:46px;height:46px;
+    border-radius:50%;background:rgba(20,20,20,.62);color:#fff;font-size:16px;line-height:46px;
+    text-align:center;backdrop-filter:blur(3px);pointer-events:none}
+  /* --- lightbox --- */
+  #lb[hidden]{display:none!important}
+  #lb{position:fixed;inset:0;z-index:90;background:rgba(18,18,18,.88);backdrop-filter:blur(6px);
+    display:flex;align-items:center;justify-content:center;padding:28px}
+  .lbox{background:var(--paper,#fff);border-radius:18px;max-width:980px;width:100%;max-height:92vh;
+    display:flex;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.45)}
+  .lbmedia{flex:1 1 55%;background:#111;display:flex;align-items:center;justify-content:center;min-height:280px;padding:12px}
+  .lbmedia img{max-width:100%;max-height:88vh;object-fit:contain;display:block}
+  .lbmedia .ph{color:#9a9a9a;font-size:14px;padding:40px;text-align:center;line-height:1.5}
+  .lbside{flex:1 1 45%;padding:24px 26px;overflow-y:auto;max-height:92vh}
+  .lbside h4{margin:0 0 6px;font-size:17px;line-height:1.3}
+  .lbside .body{font-size:13.5px;line-height:1.55;color:#666;white-space:pre-wrap;margin:10px 0 16px}
+  .lbside .row{display:flex;justify-content:space-between;gap:12px;font-size:13px;padding:7px 0;
+    border-bottom:1px solid rgba(0,0,0,.07)}
+  .lbside .row span:first-child{color:#777}
+  .lbside .row span:last-child{font-weight:600;text-align:right}
+  .lbactions{display:flex;flex-direction:column;gap:8px;margin-top:18px}
+  .lbactions a{display:block;text-align:center;padding:11px 14px;border-radius:10px;font-size:13.5px;
+    font-weight:600;text-decoration:none;background:#141413;color:#fff}
+  .lbactions a.alt{background:transparent;color:#141413;border:1px solid rgba(0,0,0,.18)}
+  .lbclose{position:absolute;top:18px;right:22px;width:38px;height:38px;border-radius:50%;border:none;
+    background:rgba(255,255,255,.15);color:#fff;font-size:20px;cursor:pointer}
+  .lbnav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:none;
+    background:rgba(255,255,255,.15);color:#fff;font-size:20px;cursor:pointer;z-index:2}
+  .lbnav.prev{left:20px} .lbnav.next{right:20px}
+  .lbnav:hover{background:rgba(255,255,255,.3)}
+  .lbpos{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.75);
+    font-size:12.5px;font-weight:700;letter-spacing:.3px}
+  @media (max-width:760px){.lbox{flex-direction:column}.lbmedia img{max-height:46vh}.lbnav{display:none}}
 </style>
 </head>
 <body>
+
+
 <div class="app">
-  <!-- SIDEBAR FILTERS -->
+  <!-- SIDEBAR FILTRI -->
   <aside class="sidebar">
     <div class="logo"><span class="mark"></span>Competitor <span>Ads</span></div>
     <div class="sub" id="meta-sub">Swipe file · Meta Ad Library + Google Ads Transparency</div>
@@ -102,12 +155,22 @@
     </div>
 
     <div class="filter-group">
-      <h3>Competitor</h3>
+      <h3>Inserzionista</h3>
       <div id="f-competitors"></div>
     </div>
 
     <div class="filter-group">
-      <h3>Stage of Awareness</h3>
+      <h3>Formato</h3>
+      <div id="f-format"></div>
+    </div>
+
+    <div class="filter-group">
+      <h3>Anteprima</h3>
+      <div id="f-preview"></div>
+    </div>
+
+    <div class="filter-group">
+      <h3>Stadio di consapevolezza</h3>
       <div id="f-awareness"></div>
     </div>
 
@@ -117,55 +180,115 @@
     </div>
 
     <div class="filter-group">
-      <h3>Performance Tier</h3>
+      <h3>Longevità</h3>
       <div id="f-tier"></div>
     </div>
 
-    <button class="reset" onclick="resetFilters()">Reset filtri</button>
+    <button class="reset" onclick="resetFilters()">Azzera i filtri</button>
   </aside>
 
   <!-- MAIN -->
   <main class="main">
     <div class="topbar">
-      <input class="search" id="search" placeholder="Cerca per headline, brand, CTA…" oninput="render()">
+      <input class="search" id="search" placeholder="Cerca nel titolo, nel testo, nel nome dell'inserzionista…" oninput="render()">
       <select class="sortsel" id="sort" onchange="render()">
-        <option value="days_desc">Più longeve (giorni attivi)</option>
+        <option value="days_desc">Più longeve (giorni in aria)</option>
         <option value="days_asc">Più recenti</option>
-        <option value="reach_desc">EU reach ↓</option>
-        <option value="brand">Brand A-Z</option>
+        <option value="reach_desc">Copertura UE ↓</option>
+        <option value="brand">Inserzionista A-Z</option>
       </select>
-      <div class="count"><b id="n">0</b> ads</div>
+      <div class="count"><b id="n">0</b> annunci<span id="shown"></span></div>
     </div>
+    <div class="chips" id="chips"></div>
     <div class="grid" id="grid"></div>
+    <button class="more" id="more" hidden onclick="showMore()">Mostra altri annunci</button>
   </main>
 </div>
 
+<div id="lb" hidden>
+  <button class="lbclose" id="lbclose" aria-label="Chiudi">×</button>
+  <button class="lbnav prev" id="lbprev" aria-label="Annuncio precedente">‹</button>
+  <button class="lbnav next" id="lbnext" aria-label="Annuncio successivo">›</button>
+  <div class="lbox" id="lbox"></div>
+  <div class="lbpos" id="lbpos"></div>
+</div>
 <script>
-// ====== STATE ======
-const AWARENESS = ["Unaware","Problem-Aware","Solution-Aware","Product-Aware","Most-Aware"];
-const FUNNEL = [["TOF","Top funnel","tof"],["MOF","Mid funnel","mof"],["BOF","Bottom funnel","bof"]];
-const TIERS = [["PROVEN","Proven","proven"],["HOT","Hot","hot"],["ACTIVE","Active","active"],["RETIRED","Retired","retired"],["SHORT","Short run","short"]];
-const SOURCES = [["meta","Meta Ad Library"],["google","Google Transparency"]];
-let DATA = {competitors:[], ads:[]};
-const sel = {source:new Set(), competitors:new Set(), awareness:new Set(), funnel:new Set(), tier:new Set()};
+// ====== ETICHETTE ======
+const AWARENESS = [
+  ["Unaware","Inconsapevole"],
+  ["Problem-Aware","Consapevole del problema"],
+  ["Solution-Aware","Consapevole della soluzione"],
+  ["Product-Aware","Consapevole del prodotto"],
+  ["Most-Aware","Pronto a comprare"]
+];
+const FUNNEL = [["TOF","Cima del funnel","tof"],["MOF","Metà funnel","mof"],["BOF","Fondo del funnel","bof"]];
+// [valore, etichetta breve (badge), classe colore, etichetta estesa (filtro)]
+const TIERS = [
+  ["PROVEN","Provata","proven","Provata — oltre 60 giorni in aria"],
+  ["HOT","Calda","hot","Calda — oltre 21 giorni"],
+  ["ACTIVE","Attiva","active","Attiva — ancora in aria"],
+  ["RETIRED","Ritirata","retired","Ritirata — non più in aria"],
+  ["SHORT","Corsa breve","short","Corsa breve — spenta in fretta"]
+];
+const SOURCES = [["meta","Meta Ad Library"],["google","Google Ads Transparency"]];
+const FORMATS = [
+  ["IMAGE","Immagine"],["VIDEO","Video"],["CAROUSEL","Carosello"],
+  ["DCO","Dinamico (DCO)"],["TEXT","Solo testo"]
+];
+const PREVIEW = [["yes","Con anteprima"],["no","Senza anteprima"]];
+const PAGE = 120;
 
-// ====== LOAD ======
+let DATA = {competitors:[], ads:[]};
+let shownCount = PAGE;      // quante card sono a schermo
+let VIEW = [];              // annunci filtrati, nell'ordine mostrato
+
+// ====== DATI ======
+// La dashboard legge data.json accanto a questo file. Senza quel file mostra
+// il campione qui sotto, per far vedere subito la struttura attesa.
+const SAMPLE={
+  competitors:[
+    {id:"comp1",name:"Competitor Uno",logo:""},
+    {id:"comp2",name:"Competitor Due",logo:""},
+    {id:"comp3",name:"Competitor Tre",logo:""}
+  ],
+  ads:[
+    {id:"a1",competitor_id:"comp1",source:"meta",image:"",media_kind:"image",ratio:1,
+     headline:"Risolvi il problema in 7 giorni",body:"Corpo dell'annuncio come appare in libreria.",
+     cta:"Scopri di più",format:"IMAGE",awareness_stage:"Problem-Aware",funnel_stage:"TOF",tier:"PROVEN",
+     days_active:142,first_seen:"2025-11-02",eu_reach:840000,n_variants:6,
+     url:"https://www.facebook.com/ads/library"},
+    {id:"a2",competitor_id:"comp2",source:"meta",image:"",media_kind:"video",ratio:0.56,
+     headline:"Il video che spiega il metodo",format:"VIDEO",awareness_stage:"Solution-Aware",
+     funnel_stage:"MOF",tier:"HOT",days_active:38,first_seen:"2026-07-14",eu_reach:210000,n_variants:2,
+     url:"https://www.facebook.com/ads/library"},
+    {id:"g1",competitor_id:"comp1",source:"google",platform:"SEARCH",image:"",media_kind:"text",ratio:1.9,
+     headline:"[testo dell'annuncio consegnato come immagine: non trascritto]",format:"TEXT",
+     awareness_stage:"Most-Aware",funnel_stage:"BOF",tier:"PROVEN",days_active:210,first_seen:"2025-08-01",
+     regions:["IT","ES"],n_variants:4,url:"https://adstransparency.google.com/"}
+  ]
+};
 async function load(){
   try{
-    const r = await fetch('data.json',{cache:'no-store'});
-    if(r.ok){ DATA = await r.json(); }
-    else throw new Error('no file');
-  }catch(e){ DATA = SAMPLE; document.getElementById('meta-sub').textContent='Demo data (sostituisci data.json)'; }
+    const r=await fetch('data.json',{cache:'no-store'});
+    if(!r.ok) throw new Error('data.json non trovato');
+    DATA=await r.json();
+  }catch(e){
+    DATA=SAMPLE;
+    document.getElementById('meta-sub').textContent='Dati di esempio — sostituisci data.json con la raccolta vera';
+  }
   buildFilters(); render();
 }
 
-// ====== FILTERS UI ======
+const sel = {source:new Set(), competitors:new Set(), format:new Set(), preview:new Set(),
+             awareness:new Set(), funnel:new Set(), tier:new Set()};
+
+// ====== FILTRI: UI ======
 function chk(container,label,value,group,color){
   const id=group+'_'+value;
-  const el=document.createElement('label'); el.className='opt';
-  el.innerHTML=`<input type="checkbox" value="${value}" onchange="toggle('${group}','${value.replace(/'/g,"")}')">`+
+  const el=document.createElement('label'); el.className='opt'; el.id='opt_'+id;
+  el.innerHTML=`<input type="checkbox" value="${value}" onchange="toggle('${group}','${String(value).replace(/'/g,"")}')">`+
     (color?`<span class="dot" style="background:${color}"></span>`:'')+
-    `<span>${label}</span><span class="cnt" id="cnt_${id}"></span>`;
+    `<span class="lbl">${label}</span><span class="cnt" id="cnt_${id}"></span>`;
   container.appendChild(el);
 }
 function buildFilters(){
@@ -173,45 +296,68 @@ function buildFilters(){
   SOURCES.forEach(([v,l])=>chk(fs,l,v,'source'));
   const fc=document.getElementById('f-competitors'); fc.innerHTML='';
   DATA.competitors.forEach(c=>chk(fc,c.name,c.id,'competitors'));
+  const fm=document.getElementById('f-format'); fm.innerHTML='';
+  FORMATS.forEach(([v,l])=>chk(fm,l,v,'format'));
+  const fp=document.getElementById('f-preview'); fp.innerHTML='';
+  PREVIEW.forEach(([v,l])=>chk(fp,l,v,'preview'));
   const fa=document.getElementById('f-awareness'); fa.innerHTML='';
-  AWARENESS.forEach(a=>chk(fa,a,a,'awareness'));
+  AWARENESS.forEach(([v,l])=>chk(fa,l,v,'awareness'));
   const ff=document.getElementById('f-funnel'); ff.innerHTML='';
   FUNNEL.forEach(([v,l,cls])=>chk(ff,l,v,'funnel',`var(--${cls})`));
   const ft=document.getElementById('f-tier'); ft.innerHTML='';
-  TIERS.forEach(([v,l,cls])=>chk(ft,l,v,'tier',`var(--${cls})`));
+  TIERS.forEach(([v,l,cls,long])=>chk(ft,long||l,v,'tier',`var(--${cls})`));
 }
 function toggle(group,value){
   const s=sel[group];
   s.has(value)?s.delete(value):s.add(value);
+  shownCount=PAGE;
+  render();
+}
+function removeFilter(group,value){
+  sel[group].delete(value);
+  const box=document.querySelector(`#opt_${group}_${CSS.escape(value)} input`);
+  if(box) box.checked=false;
+  shownCount=PAGE;
   render();
 }
 function resetFilters(){
   Object.values(sel).forEach(s=>s.clear());
   document.querySelectorAll('.sidebar input[type=checkbox]').forEach(c=>c.checked=false);
   document.getElementById('search').value='';
+  shownCount=PAGE;
   render();
 }
 
-// ====== RENDER ======
-function passes(ad){
-  if(sel.source.size && !sel.source.has(adSource(ad))) return false;
-  if(sel.competitors.size && !sel.competitors.has(ad.competitor_id)) return false;
-  if(sel.awareness.size && !sel.awareness.has(ad.awareness_stage)) return false;
-  if(sel.funnel.size && !sel.funnel.has(ad.funnel_stage)) return false;
-  if(sel.tier.size && !sel.tier.has(ad.tier)) return false;
-  const q=document.getElementById('search').value.trim().toLowerCase();
+// ====== FILTRI: LOGICA ======
+function adSource(ad){ return ad.source==='google'?'google':'meta'; }
+function adFormat(ad){ return (ad.format||'').toUpperCase(); }
+function adPreview(ad){ return ad.image?'yes':'no'; }
+function compName(id){ const c=DATA.competitors.find(x=>x.id===id); return c?c.name:id; }
+function compLogo(id){ const c=DATA.competitors.find(x=>x.id===id); return c&&c.logo?c.logo:''; }
+function searchQuery(){ return document.getElementById('search').value.trim().toLowerCase(); }
+
+// passa i filtri, escluso il gruppo indicato (serve ai conteggi contestuali)
+function passes(ad,except){
+  const on=(g,val)=>except===g || !sel[g].size || sel[g].has(val);
+  if(!on('source',adSource(ad))) return false;
+  if(!on('competitors',ad.competitor_id)) return false;
+  if(!on('format',adFormat(ad))) return false;
+  if(!on('preview',adPreview(ad))) return false;
+  if(!on('awareness',ad.awareness_stage)) return false;
+  if(!on('funnel',ad.funnel_stage)) return false;
+  if(!on('tier',ad.tier)) return false;
+  const q=searchQuery();
   if(q){
-    const hay=((ad.headline||'')+' '+(ad.description||'')+' '+(ad.cta||'')+' '+(ad.platform||'')+' '+compName(ad.competitor_id)).toLowerCase();
+    const hay=[ad.headline,ad.body,ad.cta,ad.platform,ad.advertiser,ad.format,compName(ad.competitor_id)]
+      .filter(Boolean).join(' ').toLowerCase();
     if(!hay.includes(q)) return false;
   }
   return true;
 }
-function adSource(ad){ return ad.source==='google'?'google':'meta'; }
-function compName(id){ const c=DATA.competitors.find(x=>x.id===id); return c?c.name:id; }
-function compLogo(id){ const c=DATA.competitors.find(x=>x.id===id); return c&&c.logo?c.logo:''; }
 
+// ====== RENDER ======
 function render(){
-  let ads=DATA.ads.filter(passes);
+  let ads=DATA.ads.filter(a=>passes(a));
   const sort=document.getElementById('sort').value;
   ads.sort((a,b)=>{
     if(sort==='days_desc') return (b.days_active||0)-(a.days_active||0);
@@ -220,80 +366,181 @@ function render(){
     if(sort==='brand')     return compName(a.competitor_id).localeCompare(compName(b.competitor_id));
     return 0;
   });
+  VIEW=ads;
   document.getElementById('n').textContent=ads.length;
   updateCounts();
+  renderChips();
 
   const grid=document.getElementById('grid');
-  if(!ads.length){ grid.innerHTML='<div class="empty">Nessuna ad con questi filtri.</div>'; return; }
-  grid.innerHTML=ads.map(card).join('');
+  const more=document.getElementById('more');
+  const shownEl=document.getElementById('shown');
+  if(!ads.length){
+    grid.innerHTML='<div class="empty">Nessun annuncio con questi filtri. Azzera i filtri per rivedere tutto.</div>';
+    more.hidden=true; shownEl.textContent=''; return;
+  }
+  const slice=ads.slice(0,shownCount);
+  grid.innerHTML=slice.map(card).join('');
+  const resto=ads.length-slice.length;
+  more.hidden = resto<=0;
+  more.textContent = `Mostra altri ${Math.min(PAGE,resto)} annunci`;
+  shownEl.textContent = resto>0 ? ` · ne vedi ${slice.length}` : '';
+}
+function showMore(){ shownCount+=PAGE; render(); }
+
+function renderChips(){
+  const box=document.getElementById('chips');
+  const labelOf={
+    source:v=>(SOURCES.find(x=>x[0]===v)||[v,v])[1],
+    competitors:v=>compName(v),
+    format:v=>(FORMATS.find(x=>x[0]===v)||[v,v])[1],
+    preview:v=>(PREVIEW.find(x=>x[0]===v)||[v,v])[1],
+    awareness:v=>(AWARENESS.find(x=>x[0]===v)||[v,v])[1],
+    funnel:v=>(FUNNEL.find(x=>x[0]===v)||[v,v])[1],
+    tier:v=>(TIERS.find(x=>x[0]===v)||[v,v])[1]
+  };
+  const titolo={source:'Canale',competitors:'Inserzionista',format:'Formato',preview:'Anteprima',
+                awareness:'Consapevolezza',funnel:'Funnel',tier:'Longevità'};
+  const out=[];
+  Object.keys(sel).forEach(g=>{
+    sel[g].forEach(v=>{
+      out.push(`<span class="chip" onclick="removeFilter('${g}','${String(v).replace(/'/g,"")}')">`+
+               `<b>${titolo[g]}:</b> ${labelOf[g](v)} <span class="x">×</span></span>`);
+    });
+  });
+  if(out.length>1) out.push('<span class="chip clear" onclick="resetFilters()">Azzera tutto</span>');
+  box.innerHTML=out.join('');
+}
+
+// il titolo dei Google text ad è un segnaposto: il testo vero sta dentro l'immagine
+function isPlaceholder(h){ return !h || /^\[testo dell/i.test(h); }
+function headText(ad){
+  return isPlaceholder(ad.headline)
+    ? {t:'Il testo dell’annuncio sta dentro l’immagine — apri per leggerlo', muted:true}
+    : {t:ad.headline, muted:false};
 }
 
 function card(ad){
   const tier=TIERS.find(t=>t[0]===ad.tier);
   const fn=FUNNEL.find(f=>f[0]===ad.funnel_stage);
-  const src=adSource(ad);
-  const isG=src==='google';
+  const aw=AWARENESS.find(a=>a[0]===ad.awareness_stage);
+  const isG=adSource(ad)==='google';
   const kpi2 = isG
     ? {l:'Regioni', v:(ad.regions&&ad.regions.length)?ad.regions.length:'n/d'}
-    : {l:'EU reach', v:(ad.eu_reach?fmtNum(ad.eu_reach):'n/d')};
+    : {l:'Copertura UE', v:(ad.eu_reach?fmtNum(ad.eu_reach):'n/d')};
   const srcTag = isG ? `<span class="tag src g">Google${ad.platform?' · '+ad.platform:''}</span>` : '<span class="tag src m">Meta</span>';
-  const img=ad.image?`<img src="${ad.image}" loading="lazy" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=ph>immagine non disponibile</div>'">`:'<div class="ph">no preview</div>';
+  const isVid = ad.media_kind==='video';
+  const phTxt = isVid ? 'video senza anteprima'
+              : (ad.media_kind==='text' ? 'annuncio di solo testo' : 'nessuna anteprima');
+  const fitCls = (adFormat(ad)==='TEXT' || Number(ad.ratio)>=1.6) ? ' fit' : '';
+  const img=ad.image?`<img src="${ad.image}" loading="lazy" alt="">`:`<div class="ph">${phTxt}</div>`;
   const logo=compLogo(ad.competitor_id);
-  return `<div class="card">
-    <div class="thumb">${img}
+  const h=headText(ad);
+  return `<div class="card" data-id="${ad.id}" tabindex="0" role="button" title="Apri la scheda dell'annuncio">
+    <div class="thumb${fitCls}">${img}
+      ${isVid?'<span class="play" aria-hidden="true">▶</span>':''}
       ${tier?`<span class="tier"><span class="tdot" style="background:var(--${tier[2]})"></span>${tier[1]}</span>`:''}
       ${ad.format?`<span class="fmt">${ad.format}</span>`:''}
     </div>
     <div class="cbody">
       <div class="chead">
-        ${logo?`<img class="clogo" src="${logo}" onerror="this.style.display='none'">`:'<div class="clogo"></div>'}
+        ${logo?`<img class="clogo" src="${logo}" alt="">`:`<div class="clogo ini">${compName(ad.competitor_id).slice(0,2).toUpperCase()}</div>`}
         <div class="cname">${compName(ad.competitor_id)}</div>
       </div>
       <div class="tags">
         ${srcTag}
-        ${ad.awareness_stage?`<span class="tag aw">${ad.awareness_stage}</span>`:''}
+        ${aw?`<span class="tag aw">${aw[1]}</span>`:''}
         ${fn?`<span class="tag fn ${fn[2]}">${fn[1]}</span>`:''}
       </div>
-      ${ad.headline?`<div class="headline">${ad.headline}</div>`:''}
+      <div class="headline${h.muted?' muted':''}">${h.t}</div>
       <div class="kpis">
-        <div class="kpi"><div class="l">Giorni attivi</div><div class="v">${ad.days_active!=null?ad.days_active:'n/d'}</div></div>
+        <div class="kpi"><div class="l">Giorni in aria</div><div class="v">${ad.days_active!=null?ad.days_active:'n/d'}</div></div>
         <div class="kpi"><div class="l">${kpi2.l}</div><div class="v">${kpi2.v}</div></div>
         <div class="kpi"><div class="l">Varianti</div><div class="v">${ad.n_variants||1}</div></div>
-        <div class="kpi"><div class="l">Dal</div><div class="v" style="font-size:13px">${ad.first_seen||'—'}</div></div>
+        <div class="kpi"><div class="l">In aria dal</div><div class="v" style="font-size:13px">${ad.first_seen||'—'}</div></div>
       </div>
-      ${ad.ad_library_url?`<a class="clink" href="${ad.ad_library_url}" target="_blank" rel="noopener">${isG?'Apri in Transparency Center':'Apri in Ad Library'}</a>`:''}
+      ${ad.url?`<a class="clink" href="${ad.url}" target="_blank" rel="noopener">${isG?'Apri in Google Ads Transparency ↗':'Apri in Meta Ad Library ↗'}</a>`:''}
     </div>
   </div>`;
 }
 
 function updateCounts(){
-  const base=DATA.ads;
-  SOURCES.forEach(([v])=>setCnt('source_'+v, base.filter(a=>adSource(a)===v).length));
-  DATA.competitors.forEach(c=>setCnt('competitors_'+c.id, base.filter(a=>a.competitor_id===c.id).length));
-  AWARENESS.forEach(a=>setCnt('awareness_'+a, base.filter(x=>x.awareness_stage===a).length));
-  FUNNEL.forEach(([v])=>setCnt('funnel_'+v, base.filter(x=>x.funnel_stage===v).length));
-  TIERS.forEach(([v])=>setCnt('tier_'+v, base.filter(x=>x.tier===v).length));
+  const cnt=(group,pred)=>DATA.ads.filter(a=>passes(a,group)&&pred(a)).length;
+  SOURCES.forEach(([v])=>setCnt('source_'+v, cnt('source',a=>adSource(a)===v)));
+  DATA.competitors.forEach(c=>setCnt('competitors_'+c.id, cnt('competitors',a=>a.competitor_id===c.id)));
+  FORMATS.forEach(([v])=>setCnt('format_'+v, cnt('format',a=>adFormat(a)===v)));
+  PREVIEW.forEach(([v])=>setCnt('preview_'+v, cnt('preview',a=>adPreview(a)===v)));
+  AWARENESS.forEach(([v])=>setCnt('awareness_'+v, cnt('awareness',a=>a.awareness_stage===v)));
+  FUNNEL.forEach(([v])=>setCnt('funnel_'+v, cnt('funnel',a=>a.funnel_stage===v)));
+  TIERS.forEach(([v])=>setCnt('tier_'+v, cnt('tier',a=>a.tier===v)));
 }
-function setCnt(id,n){ const el=document.getElementById('cnt_'+id); if(el) el.textContent=n; }
+function setCnt(id,n){
+  const el=document.getElementById('cnt_'+id); if(el) el.textContent=n;
+  const opt=document.getElementById('opt_'+id); if(opt) opt.classList.toggle('zero', n===0);
+}
 function fmtNum(n){ return n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?(n/1e3).toFixed(1)+'k':n; }
 
-// ====== SAMPLE (fallback se data.json manca) ======
-const SAMPLE={
-  competitors:[
-    {id:"comp1",name:"Competitor Uno",logo:"",page_id:"000"},
-    {id:"comp2",name:"Competitor Due",logo:"",page_id:"111"},
-    {id:"comp3",name:"Competitor Tre",logo:"",page_id:"222"}
-  ],
-  ads:[
-    {id:"a1",competitor_id:"comp1",image:"",headline:"Risolvi il problema in 7 giorni",cta:"Shop Now",format:"1:1",awareness_stage:"Problem-Aware",funnel_stage:"TOF",tier:"PROVEN",days_active:142,first_seen:"2025-11",eu_reach:840000,n_variants:6,ad_library_url:"https://www.facebook.com/ads/library"},
-    {id:"a2",competitor_id:"comp1",image:"",headline:"Perché il nostro è diverso",cta:"Learn More",format:"4:5",awareness_stage:"Solution-Aware",funnel_stage:"MOF",tier:"HOT",days_active:31,first_seen:"2026-04",eu_reach:120000,n_variants:3,ad_library_url:"https://www.facebook.com/ads/library"},
-    {id:"a3",competitor_id:"comp2",image:"",headline:"-30% solo questa settimana",cta:"Get Offer",format:"1:1",awareness_stage:"Most-Aware",funnel_stage:"BOF",tier:"ACTIVE",days_active:9,first_seen:"2026-05",eu_reach:45000,n_variants:2,ad_library_url:"https://www.facebook.com/ads/library"},
-    {id:"a4",competitor_id:"comp3",image:"",headline:"Non sapevi che il problema esistesse",cta:"See How",format:"9:16",awareness_stage:"Unaware",funnel_stage:"TOF",tier:"PROVEN",days_active:88,first_seen:"2026-02",eu_reach:610000,n_variants:5,ad_library_url:"https://www.facebook.com/ads/library"},
-    {id:"a5",competitor_id:"comp2",image:"",headline:"Il prodotto che cercavi",cta:"Shop Now",format:"4:5",awareness_stage:"Product-Aware",funnel_stage:"BOF",tier:"RETIRED",days_active:64,first_seen:"2025-09",eu_reach:230000,n_variants:1,ad_library_url:"https://www.facebook.com/ads/library"},
-    {id:"g1",competitor_id:"comp1",source:"google",platform:"SEARCH",image:"",headline:"Spedizione gratis sopra 49€ | Provalo 30 giorni",description:"Testo della search ad letto dal creative renderizzato.",format:"TEXT",awareness_stage:"Most-Aware",funnel_stage:"BOF",tier:"PROVEN",days_active:210,first_seen:"2025-08",eu_reach:null,regions:["IT","ES","FR"],n_variants:4,ad_library_url:"https://adstransparency.google.com/"},
-    {id:"g2",competitor_id:"comp3",source:"google",platform:"YOUTUBE",image:"",headline:"Video pre-roll 15s — demo prodotto",format:"VIDEO",awareness_stage:"Solution-Aware",funnel_stage:"MOF",tier:"HOT",days_active:44,first_seen:"2026-06",eu_reach:null,regions:["IT"],n_variants:2,ad_library_url:"https://adstransparency.google.com/"}
-  ]
-};
+// ====== SCHEDA ANNUNCIO (lightbox) ======
+const LB=document.getElementById('lb'), LBOX=document.getElementById('lbox'), LBPOS=document.getElementById('lbpos');
+let lbIdx=-1;
+function lbRow(l,v){ return v==null||v===''?'':`<div class="row"><span>${l}</span><span>${v}</span></div>`; }
+function openAt(i){
+  if(!VIEW.length) return;
+  lbIdx=(i+VIEW.length)%VIEW.length;
+  const ad=VIEW[lbIdx];
+  const isG=adSource(ad)==='google';
+  const r=Number(ad.ratio)||1;
+  const fit=r>=1 ? 'width:100%;max-width:600px;height:auto' : 'width:min(100%,380px);height:auto';
+  const media=ad.image
+    ? `<img src="${ad.image}" alt="" style="${fit}">`
+    : `<div class="ph">Anteprima non disponibile.<br>Apri l'annuncio nella libreria ufficiale con il pulsante qui a fianco.</div>`;
+  const aw=AWARENESS.find(a=>a[0]===ad.awareness_stage);
+  const h=headText(ad);
+  LBOX.innerHTML=`<div class="lbmedia">${media}</div>
+    <div class="lbside">
+      <h4${h.muted?' style="color:#9a9a9a;font-style:italic"':''}>${h.t}</h4>
+      ${ad.body?`<div class="body">${ad.body}</div>`:''}
+      ${lbRow('Inserzionista', compName(ad.competitor_id))}
+      ${lbRow('Canale', isG?('Google'+(ad.platform?' · '+ad.platform:'')):'Meta')}
+      ${lbRow('Formato', ad.format)}
+      ${lbRow('Giorni in aria', ad.days_active)}
+      ${lbRow('Longevità', (TIERS.find(t=>t[0]===ad.tier)||[])[3] || (TIERS.find(t=>t[0]===ad.tier)||[])[1])}
+      ${lbRow('Consapevolezza', aw?aw[1]:ad.awareness_stage)}
+      ${lbRow('Funnel', (FUNNEL.find(f=>f[0]===ad.funnel_stage)||[])[1])}
+      ${lbRow('Varianti', ad.n_variants||1)}
+      ${lbRow('In aria dal', ad.first_seen)}
+      ${lbRow('Copertura UE', ad.eu_reach?fmtNum(ad.eu_reach):'')}
+      ${lbRow('Regioni', (ad.regions&&ad.regions.length)?[].concat(ad.regions).join(', '):'')}
+      ${lbRow('CTA', ad.cta)}
+      <div class="lbactions">
+        ${ad.url?`<a href="${ad.url}" target="_blank" rel="noopener">${isG?'Apri in Google Ads Transparency ↗':'Apri in Meta Ad Library ↗'}</a>`:''}
+        ${ad.media_kind==='video'&&ad.media_full?`<a class="alt" href="${ad.media_full}" target="_blank" rel="noopener">Apri il video originale ↗</a>`:''}
+      </div>
+    </div>`;
+  LBPOS.textContent=`${lbIdx+1} di ${VIEW.length} · usa ← e → per scorrere`;
+  LB.hidden=false; document.body.style.overflow='hidden';
+}
+function openLB(id){ openAt(VIEW.findIndex(a=>String(a.id)===String(id))); }
+function closeLB(){ LB.hidden=true; LBOX.innerHTML=''; document.body.style.overflow=''; lbIdx=-1; }
+document.getElementById('lbclose').addEventListener('click',closeLB);
+document.getElementById('lbprev').addEventListener('click',()=>openAt(lbIdx-1));
+document.getElementById('lbnext').addEventListener('click',()=>openAt(lbIdx+1));
+LB.addEventListener('click',e=>{ if(e.target===LB) closeLB(); });
+document.addEventListener('keydown',e=>{
+  if(LB.hidden) return;
+  if(e.key==='Escape') closeLB();
+  if(e.key==='ArrowLeft') openAt(lbIdx-1);
+  if(e.key==='ArrowRight') openAt(lbIdx+1);
+});
+// tutta la card apre la scheda; il link alla libreria resta un link
+document.getElementById('grid').addEventListener('click',e=>{
+  if(e.target.closest('a')) return;
+  const c=e.target.closest('.card'); if(c) openLB(c.dataset.id);
+});
+document.getElementById('grid').addEventListener('keydown',e=>{
+  if(e.key!=='Enter'&&e.key!==' ') return;
+  const c=e.target.closest('.card'); if(!c) return;
+  e.preventDefault(); openLB(c.dataset.id);
+});
 
 load();
 </script>

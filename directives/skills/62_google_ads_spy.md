@@ -113,19 +113,28 @@ Estrai anche, per le Search ads: **claim ricorrenti**, **offerte/prezzi esposti*
 {
   "id":"CR…", "competitor_id":"<slug>", "source":"google",
   "platform":"SEARCH|YOUTUBE|SHOPPING|MAPS|PLAY|DISPLAY",
-  "image":"…", "video":null, "headline":"…", "description":"…", "cta":null,
+  "image":"data:image/png;base64,…", "media_kind":"text|image|video", "ratio":1.9,
+  "media_full":null, "headline":"…", "body":"…", "cta":null,
   "format":"TEXT|IMAGE|VIDEO",
   "awareness_stage":"Solution-Aware", "funnel_stage":"BOF", "tier":"PROVEN",
   "days_active": 142, "first_seen":"2026-01", "last_seen":"2026-08",
-  "eu_reach": null, "n_variants": 3, "regions":["IT","ES"],
-  "ad_library_url":"https://adstransparency.google.com/advertiser/AR…/creative/CR…?region=IT"
+  "eu_reach": null, "n_variants": 3, "regions":["IT","ES"], "advertiser":"…",
+  "url":"https://adstransparency.google.com/advertiser/AR…/creative/CR…?region=IT"
 }
 ```
 `eu_reach` resta `null`: è un dato solo Meta. La dashboard lo mostra come `n/d`.
 
+**Le creative Google si incorporano, non si linkano.** `image` è un **`data:` URI** ricavato dal
+file `simgad` scaricato: gli URL di `tpc.googlesyndication.com` non sono stabili e la CSP degli
+artifact blocca le immagini esterne. Per le search ad il testo **è** l'immagine: `media_kind:"text"`,
+`ratio` alto (banner largo) — la dashboard le mostra intere invece di ritagliarle. Se non hai
+trascritto il testo con la vista, lascia il segnaposto `[testo dell'annuncio consegnato come
+immagine: non trascritto]`: la dashboard lo rende come nota esplicita e invita ad aprire
+l'anteprima. **Mai inventare la trascrizione.** `url` è obbligatorio su ogni riga.
+
 **B) `03_Ad_Spy/google/gads-<slug>-<data>.html`** — swipe file self-contained (CSS inline, zero dipendenze), stessa griglia di `19_ad_spy`, ordinato per longevità, con badge tier e piattaforma.
 
-**C) Merge dashboard** — accoda le ad Google all'array `ads` di `output/dashboard/competitor-ads/data.json`, marcate `source:"google"`. La sidebar ha il filtro **Piattaforma** (Meta / Google): un solo posto per vedere i due mondi affiancati.
+**C) Merge dashboard** — accoda le ad Google all'array `ads` di `output/dashboard/competitor-ads/data.json`, marcate `source:"google"`. La sidebar filtra per **Canale** (Meta / Google), inserzionista, formato, presenza dell'anteprima, consapevolezza, funnel e longevità: un solo posto per vedere i due mondi affiancati. Verifica nel browser che le anteprime Google carichino e che la card si apra: è la prova che i due canali sono davvero confrontabili.
 
 ---
 

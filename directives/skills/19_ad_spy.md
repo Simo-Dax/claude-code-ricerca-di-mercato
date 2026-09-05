@@ -222,6 +222,16 @@ Estrai i KPI realmente disponibili da Meta Ad Library (ads commerciali): `days_a
 
 Scrivi `$WORKDIR/03_Ad_Spy/data.json` seguendo lo schema in `output/dashboard/competitor-ads/data.sample.json`. L'utente copia questo file in `output/dashboard/competitor-ads/data.json` e apre `index.html` (o lo deploya su Netlify/Cloudflare/Vercel).
 
+**La dashboard deve mostrare le creative vere, non dei riquadri vuoti.** Perciò, per ogni riga:
+
+- **`image` = `data:` URI**, generato dal file locale in `_creatives/` (miniatura ridimensionata, lato lungo ~600px, JPEG qualità ~72). Mai il link alla CDN di Meta: scade in poche ore e la CSP degli artifact blocca comunque le immagini esterne.
+- **`ratio`** = larghezza/altezza reale della creative: è ciò che permette alla scheda annuncio di aprirla nel suo formato originale invece di deformarla.
+- **`media_kind`** = `image` | `video` | `text` | `none`. Per i video: `image` è il **primo fotogramma** estratto con ffmpeg e `media_full` è l'URL del video, che la scheda offre come "Apri il video originale".
+- **`url`** = link all'annuncio nella libreria ufficiale. **Obbligatorio su ogni riga**: se l'anteprima non c'è, il link resta l'unica prova verificabile.
+- **`body`** = copy verbatim, senza parafrasi; `cta` come appare nell'annuncio.
+
+Prima di consegnare: apri `index.html` nel browser, controlla che le anteprime carichino, che una card si apra al clic e che i conteggi dei filtri cambino. Un HTML consegnato senza averlo aperto non è consegnato.
+
 ---
 
 ## Regole critiche
@@ -245,5 +255,5 @@ Scrivi `$WORKDIR/03_Ad_Spy/data.json` seguendo lo schema in `output/dashboard/co
 - [ ] Tier assegnati su `days_running` reale (🏆 ≥60gg / 🔥 ≥21gg / ⚡ <21gg / ✅ RETIRED / ⬜ SHORT RUN), non su stime
 - [ ] Mediana **e** massimo di longevità per brand (la sola media nasconde la coda lunga che è il segnale vero)
 - [ ] Format shell bancati in `03_Ad_Spy/_scratch/format-*.json` — bloccante per `24_static_ads`
-- [ ] Export `data.json` dashboard con `source:"meta"` su ogni riga
+- [ ] Export `data.json` dashboard con `source:"meta"`, `url` e `image` come `data:` URI su ogni riga — dashboard aperta nel browser e verificata (anteprime, apertura card, filtri)
 - [ ] Il report dice cosa Meta **non** copre: è il canale dell'interruzione, non dell'intento. Senza `62_google_ads_spy` la lettura è mezza cieca e va detto in testa al file.
