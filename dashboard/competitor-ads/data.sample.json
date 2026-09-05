@@ -1,0 +1,35 @@
+{
+  "_comment": "Schema dati dashboard competitor ads. Rinomina in data.json per usarlo. Generato da 19_ad_spy (/pm-competitor-spy) per source=meta e da 62_google_ads_spy (/pm-google-spy) per source=google, arricchito con awareness_stage + funnel_stage classificati via LLM. Campo source: \"meta\" (default se assente) | \"google\". Le righe google hanno platform (SEARCH/YOUTUBE/SHOPPING/MAPS/PLAY), regions[] e description; eu_reach resta null (dato solo Meta). KPI disponibili da Meta Ad Library per ads COMMERCIALI: days_active, eu_reach (solo EU), first_seen, n_variants, platforms, format. NON disponibili per ads commerciali: impressions, spend (solo per ads politici/social issue).",
+  "generated_at": "2026-05-31",
+  "niche": "esempio nicchia",
+  "country": "IT",
+  "competitors": [
+    { "id": "comp1", "name": "Competitor Uno", "logo": "https://.../logo1.png", "page_id": "1234567890" },
+    { "id": "comp2", "name": "Competitor Due", "logo": "https://.../logo2.png", "page_id": "0987654321" }
+  ],
+  "ads": [
+    {
+      "id": "ad_abc123",
+      "competitor_id": "comp1",
+      "image": "https://.../creative.jpg",
+      "video": null,
+      "headline": "Headline o primary text dell'ad",
+      "cta": "Shop Now",
+      "format": "1:1",
+      "awareness_stage": "Problem-Aware",
+      "funnel_stage": "TOF",
+      "tier": "PROVEN",
+      "days_active": 142,
+      "first_seen": "2025-11",
+      "eu_reach": 840000,
+      "n_variants": 6,
+      "platforms": ["facebook", "instagram"],
+      "ad_library_url": "https://www.facebook.com/ads/library/?id=abc123"
+    }
+  ],
+  "_enums": {
+    "awareness_stage": ["Unaware", "Problem-Aware", "Solution-Aware", "Product-Aware", "Most-Aware"],
+    "funnel_stage": ["TOF", "MOF", "BOF"],
+    "tier": ["PROVEN", "HOT", "ACTIVE", "RETIRED", "SHORT"]
+  }
+}

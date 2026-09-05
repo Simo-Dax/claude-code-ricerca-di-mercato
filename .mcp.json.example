@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "apify": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@apify/actors-mcp-server"],
+      "env": { "APIFY_TOKEN": "apify_api_LA_TUA_CHIAVE" }
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    },
+    "fal-ai": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "fal-ai-mcp-server"],
+      "env": { "FAL_KEY": "LA_TUA_CHIAVE_FAL" }
+    }
+  }
+}

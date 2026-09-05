@@ -1,0 +1,27 @@
+# --- dati di campagna: mai nel repo ---
+data.json
+/01_VOC_Research/
+/02_Brand_DNA/
+/03_Ad_Spy/
+/intermediate/
+/final/
+_meta/
+_scratch/
+
+# lo scaffold di output/ resta nel repo vuoto, il contenuto no
+output/**
+!output/**/
+!output/**/.gitkeep
+!output/README.md
+
+# --- segreti ---
+.mcp.json
+*.env
+.env*
+!*.env.example
+
+# --- sistema ---
+.DS_Store
+node_modules/
+__pycache__/
+*.log
