@@ -128,6 +128,7 @@ Switch avviene quando (PUSH + PULL) > (ANXIETY + HABIT).
 | `01_VOC_Research/personas-*.html` | Persona stack con confidence check e allocazione % (da `63`) | Sempre |
 | `intermediate/persona_stack.md` | Versione testuale delle persona per strategia, concept e copy | Sempre |
 | `01_VOC_Research/foundation-pack-*.html` | Avatar sheet + offer brief + purchase beliefs (da `18` Fase 3) | Se richiesto |
+| `hub.html` | Hub di ricerca a sei schede: monta `market-data.json` + `competitor-data.json` (specifica sotto) | Sempre |
 | `market-data.json` | Output macchina per artifact e hub (schema sotto) | Sempre |
 
 ### Separazione in quattro dimensioni — obbligatoria
@@ -153,6 +154,31 @@ Una dimensione non coperta **si dichiara come gap con il motivo** (`[EVIDENZA IN
  "gaps":[{"what":"","why":"","needed":""}]}
 ```
 
+### L'hub di ricerca — specifica di consegna
+Il deliverable navigabile della ricerca è **un hub a schede**, un file HTML solo, che monta i dati di `market-data.json` e di `competitor-data.json` (prodotto da SA1) in un blocco `const D = {…}` dentro la pagina. Nessun passaggio di build, nessuna dipendenza esterna. È il documento che si presenta e si condivide: si consegna in questa forma, non "qualcosa di simile".
+
+**Le sei schede, in quest'ordine:**
+
+| Scheda | Cosa contiene | La logica |
+|---|---|---|
+| **Panoramica** | Cosa c'è dentro la ricerca in due paragrafi, il comando unico che la rilancia, il diagramma del flusso, la tabella degli agenti del sistema (cosa fa ciascuno, cosa produce, che decisione abilita) e i numeri chiave in evidenza | È la scheda che si apre per prima e deve rispondere da sola a *cosa ho in mano e da dove viene* |
+| **Mercato** | Cinque sotto-schede: **Voce del cliente** (matrice dolori frequenza × frustrazione, verbatim con fonte), **Job to be done**, **Forze del cambiamento** (le 4 forze con magnitudo e verdetto), **Persona** (3-5 profili con % di allocazione creativa), **Fonti dirette** | Le quattro dimensioni restano separate e leggibili una per una, mai fuse in un unico riassunto |
+| **Competitor** | Tre sotto-schede: **Meta Ads**, **Google Ads**, **Meta contro Google** (convergenza / divergenza / buco di canale) | Stessa regola di SA1: i due canali non si mescolano, e il confronto è una sezione a sé |
+| **Insight** | Gli **otto blocchi** utilizzabili, ognuno con la sua evidenza; in fondo, staccata, la **Proposta strategica** (piramide di Bain + proposta di valore) marcata come *da validare al gate* | La separazione fra ciò che la ricerca ha *trovato* e ciò che la ricerca *propone* è visibile a occhio: la proposta non è ricerca |
+| **Comandi** | Il comando unico, poi la tabella di tutti i comandi con ricerca testuale | Rende la ricerca ripetibile da chi legge, non solo da chi l'ha lanciata |
+| **Dati e file** | Da dove viene ogni cosa (fonte per fonte, con la nota sui limiti di raccolta) e l'inventario dei file su disco con percorso e peso, filtrabile | La promessa dell'hub: *ogni numero viene da un file*. Senza questa scheda la promessa non è verificabile |
+
+**Comportamento obbligatorio:**
+- **Navigazione a schede** con `aria-selected`, sotto-schede dentro Mercato e Competitor, e rimandi interni fra schede (`data-goto`) invece di ripetere gli stessi contenuti.
+- **Ogni numero visibile arriva dal blocco dati**, mai scritto a mano nel testo: se una cifra cambia nel JSON, cambia nella pagina.
+- **Le lacune si mostrano.** Dove l'evidenza manca, l'hub lo scrive nel punto in cui il lettore la cercherebbe (`[EVIDENZA INSUFFICIENTE]` + cosa servirebbe), non in una nota a fondo pagina.
+- **Ogni verbatim porta autore e link cliccabile** alla recensione originale.
+- **Le tabelle larghe scorrono dentro il proprio contenitore** (`overflow-x:auto`): la pagina non scorre mai in orizzontale.
+- **`<meta charset="utf-8">` nei primi 1024 byte**, altrimenti gli accenti diventano mojibake sui server che non mandano il charset.
+- **La proposta di valore va scritta in italiano di senso compiuto**, con verbi di gestione concreti; si rilegge ad alta voce prima di consegnare. Se una frase sembra tradotta dall'inglese, è tradotta dall'inglese: si riscrive.
+
+Output: `01_VOC_Research/hub-*.html` (o `hub.html` nella cartella del run). Verifica prima della consegna: apri la pagina, cambia scheda e sotto-scheda, controlla che i numeri compaiano, che gli accenti si leggano e che nessun blocco `<script>` dia errore in console.
+
 ### Lingua e forma — vale per ogni file prodotto
 - **Scrivi nella lingua del brief.** Se il brief è in italiano, l'output è in italiano scritto da madrelingua: non una traduzione dall'inglese. Frasi con senso compiuto, vocabolario di chi fa marketing in Italia.
 - **Gli accenti sono obbligatori** e sopravvivono alla scrittura del file: `può`, `più`, `così`, `già`, `perché`, `però`, `qualità`, `affidabilità`, `usabilità`. Scrivi i file in UTF-8; non passare mai il testo per una codifica ASCII che spoglia gli accenti.
@@ -170,6 +196,10 @@ Una dimensione non coperta **si dichiara come gap con il motivo** (`[EVIDENZA IN
 - [ ] Ogni claim ancorato a un verbatim con fonte, o marcato `[EVIDENZA INSUFFICIENTE]`
 - [ ] 4 forze con magnitudo 1-5 **e** verdetto sull'equazione del progresso (non solo la tabella)
 - [ ] 3-5 persona con confidence check e allocazione % che somma a 100
+- [ ] Hub a schede consegnato con le sei schede previste (Panoramica · Mercato · Competitor · Insight · Comandi · Dati e file) e le sotto-schede di Mercato e Competitor
+- [ ] Nella scheda Insight la **proposta strategica** è separata e marcata come da validare al gate
+- [ ] Scheda **Dati e file** compilata: ogni fonte con il suo limite dichiarato e ogni file con percorso e peso
+- [ ] Hub **aperto nel browser**: schede navigabili, numeri presenti, accenti corretti, console pulita
 - [ ] `market-data.json` parsabile (`python3 -c "import json;json.load(open('market-data.json'))"`)
 - [ ] Nessun dato inventato: geo non coperte, segmenti non validati e campioni sottili dichiarati esplicitamente
 - [ ] Italiano (o lingua del brief) corretto: accenti presenti, nessun anglicismo evitabile, frasi di senso compiuto

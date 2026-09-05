@@ -87,7 +87,7 @@ Gli agenti e le skill di questo kit citano, negli handoff, skill a valle che **n
 Le skill scrivono nella cartella dove Claude Code è aperto (`pwd`).
 
 ```
-01_VOC_Research/     ← VOC (18) + persona stack (63)
+01_VOC_Research/     ← VOC (18) + persona stack (63) + hub.html (l'hub di ricerca a schede)
 03_Ad_Spy/           ← swipe file Meta (19, 52) + google/ (62) + _scratch/
 intermediate/        ← output testuali degli agenti: sa1_*, sa2_*, persona_stack,
                        competitor_review_gap, segment_pain_matrix, insight
@@ -95,6 +95,16 @@ dashboard/competitor-ads/  ← dashboard Meta + Google (apri index.html)
 ```
 
 ---
+
+## I due deliverable visuali
+
+Una ricerca chiusa produce **due pagine HTML**, oltre ai `.md` in `intermediate/`. Le specifiche complete stanno nei due agenti; qui il minimo sindacale.
+
+**Hub di ricerca** (SA2) — un file, sei schede: **Panoramica** (cosa c'è dentro, il flusso, gli agenti) · **Mercato** (voce del cliente, job to be done, forze del cambiamento, persona, fonti) · **Competitor** (Meta, Google, Meta contro Google) · **Insight** (gli otto blocchi, e in fondo la proposta strategica marcata *da validare al gate*) · **Comandi** · **Dati e file** (ogni numero risale al file da cui viene). I dati vivono in un blocco `const D = {…}` dentro la pagina: nessun passaggio di build.
+
+**Pannello annunci** (SA1) — tutti gli annunci raccolti sui due canali in una pagina sola: sette gruppi di filtro (canale, inserzionista, formato, anteprima, consapevolezza, funnel, longevità) con **conteggi contestuali**, etichette rimovibili, ricerca testuale, caricamento a blocchi di 120. **Ogni carta si apre** e la scheda scorre l'intero set filtrato con ← e →. Le creatività sono **incorporate** come `data:` URI (le CDN pubblicitarie sono bloccate e scadono) e ogni riga porta il **link alla libreria ufficiale**.
+
+Regola comune: un HTML si consegna solo dopo averlo aperto nel browser.
 
 ## Prerequisiti
 

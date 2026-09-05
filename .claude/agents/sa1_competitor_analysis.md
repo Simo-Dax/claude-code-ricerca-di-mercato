@@ -144,6 +144,40 @@ Regole operative:
 - Chi non ha media per natura (annunci di solo testo su Google) mostra un segnaposto **che dice perché**, non un riquadro vuoto.
 - Il campo `image` di `competitor-data.json` contiene il `data:` URI; `image_full` / `media_full` conservano l'URL originale per riferimento.
 
+### Il pannello annunci — specifica di consegna
+Il deliverable visuale di SA1 è **un pannello unico** che tiene insieme i due canali. Non due dashboard separate, non una tabella. Questa è la specifica: si consegna così, non "qualcosa di simile".
+
+**Struttura.** Una pagina HTML sola, nessun passaggio di build. Barra laterale con i filtri a sinistra, griglia degli annunci a destra, scheda a piena pagina che si apre sopra. I dati stanno dentro il file come blocco `const INLINE = {…}`; la copia template legge invece `data.json` via `fetch` e ricade sui dati di esempio se non lo trova.
+
+**I sette gruppi di filtro** (in quest'ordine, tutti a selezione multipla):
+
+| Gruppo | Valori |
+|---|---|
+| Canale | Meta Ad Library · Google Ads Transparency |
+| Inserzionista | un'opzione per competitor, con l'iniziale come avatar quando manca il logo |
+| Formato | Immagine · Video · Carosello · Dinamico (DCO) · Solo testo |
+| Anteprima | Con anteprima · Senza anteprima |
+| Stadio di consapevolezza | Inconsapevole · Consapevole del problema · della soluzione · del prodotto · Pronto a comprare |
+| Funnel | Cima · Metà · Fondo |
+| Longevità | Provata (>60gg) · Calda (>21gg) · Attiva · Ritirata · Corsa breve |
+
+Più una **ricerca testuale** che batte su titolo, testo, CTA, piattaforma, inserzionista e formato, e un ordinamento (longevità, più recenti, copertura, inserzionista A-Z).
+
+**Comportamento obbligatorio:**
+- **Conteggi contestuali.** Ogni opzione mostra quanti annunci resterebbero *tenendo conto degli altri filtri attivi ma non del proprio gruppo* — un `passes(ad, except)` che salta il gruppo di cui sta contando. Le opzioni a zero si spengono (opacità bassa) invece di sparire: sapere che un competitor non ha caroselli è un dato.
+- **Etichette rimovibili.** Ogni filtro attivo diventa una linguetta con la × sopra la griglia, più un "azzera tutto". L'utente deve poter tornare a 1.575 annunci con un click.
+- **Tutta la carta apre la scheda**, non solo la miniatura — con `cursor: zoom-in`. L'unica eccezione è il link alla libreria ufficiale, che resta un link.
+- **La scheda scorre l'intero set filtrato** con ← e → (e con i due pulsanti laterali), e scrive la posizione: `12 di 623 · usa ← e → per scorrere`. Esc chiude.
+- **Nessun annuncio irraggiungibile.** Anche quelli senza anteprima hanno una carta e si aprono: il filtro "Senza anteprima" serve proprio a contarli.
+- **Rapporto d'aspetto rispettato.** Miniature in un quadrato con `overflow:hidden`; le creatività larghe o alte (rapporto ≥1,6 e i testi Google) usano `object-fit: contain` su fondo bianco con un bordo sottile, così si vedono **intere** invece che ritagliate.
+- **Caricamento a blocchi di 120** con un pulsante "Mostra altri 120 annunci": una griglia da 1.500 nodi non si apre.
+- **Onestà sui segnaposto.** Un titolo che è un segnaposto (i testi Google consegnati come immagine e non trascritti) non si stampa grezzo fra parentesi quadre: si rende come nota esplicita — *«Il testo dell'annuncio sta dentro l'immagine — apri per leggerlo»*. Mai inventare la trascrizione.
+- **`<meta charset="utf-8">` nei primi 1024 byte del file.** Senza, un server locale che non manda il charset produce mojibake su ogni accento.
+
+**I due file:** `03_Ad_Spy/dashboard.html` (leggero, legge `data.json`) e `03_Ad_Spy/dashboard-embedded.html` (anteprime incorporate, è quello da pubblicare). Il template di partenza è `output/dashboard/competitor-ads/index.html`: si copia e si riempie, non si riscrive da zero.
+
+**Verifica prima della consegna** — non opzionale: apri il file nel browser e controlla che (1) le miniature si vedano davvero, (2) una carta a caso si apra e le frecce scorrano, (3) selezionando un canale i conteggi degli altri gruppi cambino, (4) gli accenti si leggano. Un HTML consegnato senza essere stato aperto non è consegnato.
+
 ### Lingua e forma — vale per ogni file prodotto
 - **Scrivi nella lingua del brief.** Se il brief è in italiano, l'output è in italiano scritto da madrelingua: non una traduzione dall'inglese. Frasi con senso compiuto, vocabolario di chi fa marketing in Italia.
 - **Gli accenti sono obbligatori** e sopravvivono alla scrittura del file: `può`, `più`, `così`, `già`, `perché`, `però`, `qualità`, `longevità`, `visibilità`. Scrivi i file in UTF-8; non passare mai il testo per una codifica ASCII che spoglia gli accenti.
@@ -159,6 +193,9 @@ Regole operative:
 - [ ] 2-3 white space, ognuno con la prova di *perché* è libero (non "sembra libero")
 - [ ] 1-2 angoli saturi, con chi li presidia e da quanti giorni
 - [ ] Differenziatore raccomandato in **una** frase
+- [ ] Pannello annunci consegnato nella forma prevista: sette gruppi di filtro con conteggi contestuali, etichette rimovibili, carta cliccabile che apre la scheda, frecce ← → sull'intero set filtrato, blocchi da 120
+- [ ] Pannello **aperto nel browser** e verificato: anteprime visibili, una carta aperta, conteggi che si aggiornano, accenti corretti
+- [ ] Ogni riga di `ads` ha `url` alla libreria ufficiale; le creatività disponibili sono `data:` URI, non link a CDN
 - [ ] `competitor-data.json` parsabile (`python3 -c "import json;json.load(open('competitor-data.json'))"`)
 - [ ] Ogni numero tracciabile a un file su disco; **troncamenti dello scrape dichiarati** (chi si ferma al cap non ha quel volume reale)
 - [ ] Ogni annuncio nel deliverable visuale ha anteprima incorporata **o** link alla libreria ufficiale — e comunque il link
