@@ -1,6 +1,6 @@
 # Motore condiviso — Compliance claim e prove creative
 
-Riferimento condiviso usato da `53_ad_angles`, `54_headline_bank`, `55_video_script` (e da SA7 in generale). Regole di claim non negoziabili — ogni skill che scrive copy persuasivo o riempie slot di prova le applica identiche. Diverso da `49_anti_ai_slop` (che governa lo STILE di scrittura, non la sostanziazione delle claim): usali insieme.
+Riferimento condiviso usato da `53_ad_angles`, `54_headline_bank`, `55_video_script` (e dal copywriting in generale). Regole di claim non negoziabili — ogni skill che scrive copy persuasivo o riempie slot di prova le applica identiche. Diverso da `49_anti_ai_slop` (che governa lo STILE di scrittura, non la sostanziazione delle claim): usali insieme.
 
 ---
 

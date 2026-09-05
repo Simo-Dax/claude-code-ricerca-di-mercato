@@ -16,4 +16,4 @@ Argomenti: $ARGUMENTS
 4. Fase 1: ricerca web del linguaggio verbatim (min 30 citazioni con fonte). Fase 2: documento HTML strutturato.
 5. **Fase 3 opzionale — Foundation Pack:** dopo la Fase 2 offri "Vuoi anche il Foundation Pack?". Se sì (o se l'utente parte con "costruisci il foundation pack" su un VOC esistente) → deriva SENZA nuova ricerca: Customer Avatar Sheet + Offer Brief + 6 Purchase Beliefs → `01_VOC_Research/foundation-pack-[prodotto].html`.
 
-Il VOC alimenta SA5 (concept), SA7 (copy), Post-SA7 (landing). Il Foundation Pack prefigura/alimenta SA4 (non sostituisce `32_brand_strategy`).
+Il VOC alimenta i concept creativi, il copy e le landing page. Il Foundation Pack prefigura e alimenta la strategia di marca (non sostituisce `32_brand_strategy`).

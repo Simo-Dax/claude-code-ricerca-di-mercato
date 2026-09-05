@@ -1,6 +1,6 @@
 # Motore condiviso — Awareness + Tensione + Funnel + CTA
 
-Riferimento condiviso usato da `53_ad_angles`, `54_headline_bank`, `55_video_script` (e riusabile da SA4/SA7 per copy/campagne). Definisce **come cambia il messaggio** in base allo stato del prospect, su due assi distinti:
+Riferimento condiviso usato da `53_ad_angles`, `54_headline_bank`, `55_video_script` (e riusabile a valle per copy e campagne). Definisce **come cambia il messaggio** in base allo stato del prospect, su due assi distinti:
 
 - **Asse 1 — AWARENESS (Schwartz):** quanto il prospect SA.
 - **Asse 2 — TENSIONE (layer):** quale pressione emotiva/identitaria sta vivendo ORA, indipendente da quanto sa.

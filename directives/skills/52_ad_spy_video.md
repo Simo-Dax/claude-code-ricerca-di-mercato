@@ -4,7 +4,7 @@
 **Output:** `03_Ad_Spy/<slug>-video/video-teardown-<slug>-<YYYYMMDD>.html` + `.json`
 **Prerequisiti:** Apify API key (`/pm-setup-apify`), fal.ai API key (`/pm-setup-fal-ai`)
 
-Sorella video di `19_ad_spy` (che copre **solo** static image ads). Dove `19_ad_spy` produce uno swipe file, questa skill produce, per ogni video competitor, un **teardown strutturato**: script word-for-word, on-screen text, hook, beat sheet, scene-by-scene, CTA. **Pura intelligence — non genera mai ad nuove.** La trasformazione in ad nuova è compito a valle di `23_competitor_rebuild`/SA5.
+Sorella video di `19_ad_spy` (che copre **solo** static image ads). Dove `19_ad_spy` produce uno swipe file, questa skill produce, per ogni video competitor, un **teardown strutturato**: script word-for-word, on-screen text, hook, beat sheet, scene-by-scene, CTA. **Pura intelligence — non genera mai ad nuove.** La trasformazione in ad nuova è compito a valle di `23_competitor_rebuild`.
 
 ---
 
@@ -12,7 +12,7 @@ Sorella video di `19_ad_spy` (che copre **solo** static image ads). Dove `19_ad_
 
 1. **Stesso brand-lock di `19_ad_spy`** — Pages scraper obbligatorio (`pageAdLibrary.id`), mai bare slug.
 2. **Video, non static** — scrape con `media_type=all`, poi filtro solo video in post.
-3. **Trascrizione + lettura frame via fal.ai** (non locale) — coerente con l'architettura MCP-propri del progetto: niente venv/whisper locale da installare, si usa il fal.ai già configurato per SA6.
+3. **Trascrizione + lettura frame via fal.ai** (non locale) — coerente con l'architettura MCP-propri del progetto: niente venv/whisper locale da installare, si usa il fal.ai già configurato nel progetto.
 
 ---
 
@@ -224,7 +224,7 @@ Brand verificati:
 Non brand-lockati:
   ❌ Brand X — pagina ristretta.
 
-Questa è pura intelligence: apri l'HTML per leggere i teardown, passa il JSON a 23_competitor_rebuild/SA5 per costruire ad nuove.
+Questa è pura intelligence: apri l'HTML per leggere i teardown, passa il JSON a `23_competitor_rebuild` per costruire ad nuove.
 ```
 
 ---
@@ -253,4 +253,4 @@ Questa è pura intelligence: apri l'HTML per leggere i teardown, passa il JSON a
 - [ ] Beat sheet timestampato + on-screen text separato dal parlato
 - [ ] Video non scaricabili o non trascrivibili elencati con il motivo, non omessi
 - [ ] Zero presenza video di un competitor = dato dichiarato (non compra video su Meta), verificato
-- [ ] Nessun ad generato: questa skill è intelligence, la produzione è SA6
+- [ ] Nessun ad generato: questa skill è intelligence, la produzione è una fase a valle

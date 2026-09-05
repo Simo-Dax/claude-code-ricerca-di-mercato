@@ -16,4 +16,4 @@ Argomenti: $ARGUMENTS
 4. Prima il pages scraper per validare il Page ID, poi N agent paralleli per N brand.
 5. Output: `03_Ad_Spy/adspy-*.html` con scoring tiers (PROVEN/HOT/ACTIVE/RETIRED/SHORT RUN).
 
-Lo swipe file alimenta SA5 (`/pm-competitor-rebuild`) e SA7 (`/pm-meta-copy`).
+Lo swipe file alimenta la fase creativa (`/pm-competitor-rebuild`) e il copy (`/pm-meta-copy`).

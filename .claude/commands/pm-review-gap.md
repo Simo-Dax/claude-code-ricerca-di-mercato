@@ -1,5 +1,5 @@
 ---
-description: Competitor review mining — gap di mercato dal delta tra recensioni positive e negative dei competitor (Amazon/Trustpilot/G2/App Store). Apify REST. Skill 47 (SA1/SA2 → SA4).
+description: Competitor review mining — gap di mercato dal delta tra recensioni positive e negative dei competitor (Amazon/Trustpilot/G2/App Store). Apify REST. Skill 47 (SA1/SA2 → strategia).
 argument-hint: [competitor o categoria]
 ---
 

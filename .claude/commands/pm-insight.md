@@ -14,4 +14,4 @@ Argomenti: $ARGUMENTS
 3. Sintetizza gli 8 building block, ognuno con fonte citata (quant/qual/macro) e logica strategica.
 4. Chiudi con la PROPOSTA: Value Proposition (Bain), USP, Emotional Reason Why, Rational Reason Why, Trigger Events → azione, offerta core+bonus+garanzie, tone of voice (nemico che manleva + POV).
 5. Output: `intermediate/insight.md` con sezione finale "⚠️ DA VALIDARE DALL'UMANO".
-6. 🚦 GATE 1: mostra il riepilogo, chiedi conferma, applica correzioni. NON procedere a SA3/SA4 senza OK esplicito.
+6. 🚦 GATE 1: mostra il riepilogo, chiedi conferma, applica correzioni. NON procedere alla fase strategica senza OK esplicito.

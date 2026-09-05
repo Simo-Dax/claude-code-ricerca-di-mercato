@@ -1,8 +1,8 @@
 # Segment & Pain Prioritization — Acquisition (chi targettiamo e perché)
 
-**Agente:** SA4 (PM Strategist) — ponte insight→strategia, dentro/dopo `33_insight_synthesis`, prima di `32_brand_strategy`.
+**Agente:** ponte insight→strategia, dentro/dopo `33_insight_synthesis`, prima di `32_brand_strategy`.
 **Input:** `01_VOC_Research/` + `intermediate/competitor_review_gap.md` (da `47`) + `intermediate/sa3_financial_framework.md` (se disponibile, per profittabilità) + `context/brand/` + `intermediate/insight.md` **se già esiste** (opzionale — questa skill gira a step 3.5, prima di `33`, e ALIMENTA `33`; non dipende dall'insight finale)
-**Output:** `intermediate/segment_pain_matrix.md` → feed a `33` dim 4-5 (Key Segment, Pain) e a `32` (VP per segmento) + targeting SA4 Fase 2
+**Output:** `intermediate/segment_pain_matrix.md` → feed a `33` dim 4-5 (Key Segment, Pain) e a `32` (VP per segmento) + targeting delle campagne
 **Origine:** metodo Learnn fase 2-3 (segmentazione per contesto/trigger, prioritizzazione TAM). Distinta da `44_rfm` (retention/clienti esistenti) — qui è **acquisition** (prospect).
 
 ---
@@ -14,7 +14,7 @@ Un segmento non è una demografica ("donne 25-40"). È **un contesto + un trigge
 2. **Mappa attributi del segmento × pain** per capire in quale contesto il dolore avviene.
 3. **Definisce e prioritizza i segmenti** per contesto+trigger su 3 fattori macro (fatturato/profittabilità, accesso, crescita/TAM).
 
-Il risultato vincola chi targettiamo (SA4 Fase 2), cosa promettiamo (`32`), e dove l'AI smette e decide l'umano.
+Il risultato vincola chi targettiamo (l'architettura delle campagne), cosa promettiamo (`32`), e dove l'AI smette e decide l'umano.
 
 ---
 
@@ -93,7 +93,7 @@ Scora ogni segmento candidato sui 3 fattori (1-5) e ordina:
 | [Seg B] | 3 | 5 | 4 | 12 | 2° |
 | [Seg C] | 4 | 2 | 5 | 11 | 3° |
 
-- **Fatturato/Profittabilità** — quanto vale (AOV/LTV, margine; usa SA3 se disponibile).
+- **Fatturato/Profittabilità** — quanto vale (AOV/LTV, margine; usa i dati economici del brand se disponibili).
 - **Facilità di accesso** — quanto è raggiungibile/targettizzabile a costo sostenibile (canali, intent, audience size addressable).
 - **Crescita / TAM** — quanto è grande e in che direzione va (mercato in crescita > maturo).
 
@@ -130,5 +130,5 @@ Pareggio o score vicini → l'umano decide (decisione di mercato, GATE 1). Racco
 `segment_pain_matrix.md` →
 - **`33_insight_synthesis`**: alimenta il building block 4 (Key Segment, con contesto+trigger+priorità), il 5 (Pain prioritizzati) e l'8 (Trigger point).
 - **`32_brand_strategy`**: la VP e i benefici si scrivono PER il segmento prioritario; i pain white space → USP.
-- **SA4 Fase 2 (Campaign Architecture)**: il segmento+trigger guida targeting, audience stack e angoli per fase funnel.
-- **SA3 (Financial)**: la profittabilità del segmento informa AOV/LTV target.
+- **Architettura delle campagne**: il segmento+trigger guida targeting, audience stack e angoli per fase funnel.
+- **Framework finanziario**: la profittabilità del segmento informa AOV/LTV target.

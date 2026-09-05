@@ -88,7 +88,7 @@ Se sì → Fase 3. Se no → fine.
 
 ### FASE 3 — Foundation Pack (opzionale, derivato dal VOC, NESSUNA nuova ricerca)
 
-Layer di offer-strategy costruito **interamente dal VOC** (Fasi 1-2 o un doc esistente) + Brand DNA se presente. Non scrive copy finito e non fa ricerca nuova: struttura ciò che il VOC già dice in una base d'offerta pronta per SA4/SA5/SA7.
+Layer di offer-strategy costruito **interamente dal VOC** (Fasi 1-2 o un doc esistente) + Brand DNA se presente. Non scrive copy finito e non fa ricerca nuova: struttura ciò che il VOC già dice in una base d'offerta pronta per strategia, concept e copy.
 
 **Trigger:**
 - Dopo Fase 2, su "sì".
@@ -110,7 +110,7 @@ Layer di offer-strategy costruito **interamente dal VOC** (Fasi 1-2 o un doc esi
 
 **Output:** `01_VOC_Research/foundation-pack-[nome-prodotto].html`.
 
-**Relazione con SA4/SA5:** il Foundation Pack è uno **starter d'offerta veloce derivato dal VOC**, non sostituisce il full Brand Strategy di `32_brand_strategy` (🚦GATE 2) né l'`33_insight_synthesis`. Li **prefigura e alimenta**: SA4 può partire da qui invece che da zero. Se la pipeline completa girerà, segnalalo all'utente ("questo diventa input per SA4, non lo rimpiazza").
+**Relazione con la strategia:** il Foundation Pack è uno **starter d'offerta veloce derivato dal VOC**, non sostituisce il full Brand Strategy di `32_brand_strategy` (🚦GATE 2) né l'`33_insight_synthesis`. Li **prefigura e alimenta**: La fase strategica può partire da qui invece che da zero. Se la pipeline completa girerà, segnalalo all'utente ("questo diventa input per la strategia, non la rimpiazza").
 
 ---
 

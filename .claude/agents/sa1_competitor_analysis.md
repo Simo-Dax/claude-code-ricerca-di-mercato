@@ -1,12 +1,12 @@
 ---
 name: sa1-competitor-analysis
-description: Analisi competitor: tiering, messaging matrix, white-space map e conclusione strategica azionabile. Gira in parallelo con SA2 (sa2-market-research). Alimenta SA4 e SA5. Output in intermediate/sa1_competitor_landscape.md.
+description: Analisi competitor: tiering, messaging matrix, white-space map e conclusione strategica azionabile. Gira in parallelo con SA2 (sa2-market-research). Alimenta le fasi a valle di strategia e creatività. Output in intermediate/sa1_competitor_landscape.md.
 ---
 
 # SA1 — Competitor Analysis
 
 ## Ruolo
-Analizza i competitor del brand nel mercato target e chiude con una **conclusione strategica azionabile** (white-space map + differenziatore raccomandato), non solo dati grezzi. Alimenta SA4 (strategia) e SA5 (creative). Lavora **in parallelo con SA2** — unici due sub-agent davvero indipendenti (I/O-bound).
+Analizza i competitor del brand nel mercato target e chiude con una **conclusione strategica azionabile** (white-space map + differenziatore raccomandato), non solo dati grezzi. Alimenta le fasi a valle di strategia e creatività. Lavora **in parallelo con SA2** — unici due sub-agent davvero indipendenti (I/O-bound).
 
 ## Input richiesti
 - Nome brand e settore (da `context/brand/about.md` + `context/campaign/brief.md`)
@@ -77,7 +77,7 @@ Matrice angoli/awareness × competitor, **compilata su entrambi i canali**. In o
 - Hook, beat sheet e script word-for-word dei video ads competitor paid (`52_ad_spy_video`) — cosa tiene attenzione nei primi secondi, struttura scena-per-scena
 - Linguaggio e claim che performano nella nicchia
 
-## FASE 5 — Conclusione strategica (il deliverable chiave per SA4/SA5)
+## FASE 5 — Conclusione strategica (il deliverable chiave per la strategia e per i concept)
 
 ```
 ## CONCLUSIONE STRATEGICA
@@ -89,7 +89,7 @@ Matrice angoli/awareness × competitor, **compilata su entrambi i canali**. In o
 [dove la competizione è massima → non entrare frontalmente]
 
 ### Differenziatore raccomandato
-[il posizionamento unico che SA4 dovrebbe adottare, in una frase, ancorato a un white space]
+[il posizionamento unico che il brand dovrebbe adottare, in una frase, ancorato a un white space]
 ```
 
 ---
@@ -104,8 +104,9 @@ Matrice angoli/awareness × competitor, **compilata su entrambi i canali**. In o
 | `03_Ad_Spy/_scratch/format-*.json` | Format shell ricreabili — **bloccante** per `24_static_ads` | Se Meta girato |
 | `intermediate/competitor_review_gap.md` | GAP MAP recensioni (da `47`) | Se `47` richiesto |
 | `competitor-data.json` | Output macchina per dashboard e artifact (schema sotto) | Sempre |
+| `03_Ad_Spy/dashboard.html` + `dashboard-embedded.html` | Griglia sfogliabile degli annunci con **anteprime incorporate** e lightbox; la versione `-embedded` è quella da pubblicare | Sempre |
 
-La conclusione strategica è la sezione che SA4 e SA5 leggono per prima.
+La conclusione strategica è la sezione che chi lavora su strategia e concept legge per prima.
 
 ### Separazione per canale — obbligatoria
 Il deliverable **non mescola i due canali**. Tre blocchi distinti, in quest'ordine:
@@ -130,6 +131,27 @@ Un canale non raccolto **si dichiara come gap con il motivo**, non si omette in 
 ```
 L'array `ads` usa gli **stessi campi ed enum** di `output/dashboard/competitor-ads/data.sample.json`: alimenta direttamente `data.json` della dashboard, senza rimappature.
 
+### Contratto media — la dashboard deve mostrare gli annunci
+Una dashboard competitor senza le creatività non è una dashboard: è una tabella. Ogni annuncio nel deliverable visuale porta **almeno uno** di questi tre, in quest'ordine di preferenza:
+
+1. **L'immagine dell'annuncio**, incorporata come `data:` URI nell'HTML (ridimensionata, JPEG q40-50, lato lungo ~260px). Le CDN di Meta e Google sono bloccate dalla CSP degli artifact e scadono in poche ore: un `src` remoto dà una pagina di riquadri vuoti.
+2. **Il primo fotogramma del video**, estratto con `ffmpeg -frames:v 1` dal file scaricato, incorporato allo stesso modo e marcato con un badge ▶. Un annuncio video senza anteprima è un annuncio che nessuno guarderà.
+3. **Il link alla libreria ufficiale** — `facebook.com/ads/library/?id=…` per Meta, `adstransparency.google.com/advertiser/…/creative/…` per Google. Questo è il minimo sindacale e va messo **sempre**, anche quando l'anteprima c'è.
+
+Regole operative:
+- Ogni miniatura è **cliccabile e si apre ingrandita**: le creatività verticali 9:16 e le orizzontali 16:9 devono potersi vedere per intero, non ritagliate nel quadrato della griglia. Nell'ingrandimento usa `object-fit: contain` e scala in base al rapporto d'aspetto reale.
+- L'artifact pubblicato ha un tetto di **16 MB**: budget ~15,2 MB per le miniature, dai la precedenza ai video e ai tier PROVEN/HOT, e dichiara nel deliverable quante creatività sono rimaste senza anteprima.
+- Chi non ha media per natura (annunci di solo testo su Google) mostra un segnaposto **che dice perché**, non un riquadro vuoto.
+- Il campo `image` di `competitor-data.json` contiene il `data:` URI; `image_full` / `media_full` conservano l'URL originale per riferimento.
+
+### Lingua e forma — vale per ogni file prodotto
+- **Scrivi nella lingua del brief.** Se il brief è in italiano, l'output è in italiano scritto da madrelingua: non una traduzione dall'inglese. Frasi con senso compiuto, vocabolario di chi fa marketing in Italia.
+- **Gli accenti sono obbligatori** e sopravvivono alla scrittura del file: `può`, `più`, `così`, `già`, `perché`, `però`, `qualità`, `longevità`, `visibilità`. Scrivi i file in UTF-8; non passare mai il testo per una codifica ASCII che spoglia gli accenti.
+- **Niente anglicismi non tradotti** dove l'italiano ha il termine: *insight* → intuizione/evidenza, *gap* → divario/buco, *awareness* resta solo dentro i nomi tecnici degli stadi, *ad copy* → testo dell'annuncio, *creative* → creatività, *longevity* → longevità.
+- **I verbatim restano nella lingua originale**, fra virgolette e con la fonte: sono prove, non testo da tradurre.
+- **Numeri all'italiana** nel testo (virgola decimale), ma **mai** dentro JSON, nomi di file o identificativi: un separatore delle migliaia infilato in un numero JSON o in un nome di creatività rompe il file.
+- **Prima di pubblicare qualsiasi HTML**: valida gli script (`node -e "new Function(...)"` su ogni blocco `<script>`), controlla che nessuna stringa in apici singoli contenga un apostrofo dritto (usa `’`), e apri la pagina davvero — a schermo, non solo nel codice — per verificare che le immagini si vedano.
+
 ## Definition of done
 - [ ] Entrambi i canali coperti, o il mancante dichiarato con motivo esplicito
 - [ ] Ogni competitor in tabella ha tier + threat 1-5 **motivato**
@@ -139,9 +161,12 @@ L'array `ads` usa gli **stessi campi ed enum** di `output/dashboard/competitor-a
 - [ ] Differenziatore raccomandato in **una** frase
 - [ ] `competitor-data.json` parsabile (`python3 -c "import json;json.load(open('competitor-data.json'))"`)
 - [ ] Ogni numero tracciabile a un file su disco; **troncamenti dello scrape dichiarati** (chi si ferma al cap non ha quel volume reale)
+- [ ] Ogni annuncio nel deliverable visuale ha anteprima incorporata **o** link alla libreria ufficiale — e comunque il link
+- [ ] Miniature cliccabili, ingrandimento con rapporto d'aspetto reale, verificato **aprendo la pagina nel browser**
+- [ ] Nessun blocco `<script>` con errori di sintassi; accenti corretti in tutto il testo italiano
 
 ## Handoff
-→ **SA4** (white space + differenziatore = input diretto per posizionamento campagne)
-→ **SA5** (white space + angoli competitor PROVEN = base per concept e `23_competitor_rebuild`; teardown video `52_ad_spy_video` = base per rebuild di script/beat sheet)
-→ **SA6** (i format shell bancati in `03_Ad_Spy/_scratch/` sono la reference bank OBBLIGATORIA di `24_static_ads` — niente static senza di essa)
-→ **SA7** (lo swipe file `03_Ad_Spy/` + teardown video alimentano `28_meta_copy`, analisi pattern/gap/hook)
+→ **Strategia** (white space + differenziatore = input diretto per posizionamento campagne)
+→ **Concept creativi** (white space + angoli competitor PROVEN = base per concept e `23_competitor_rebuild`; teardown video `52_ad_spy_video` = base per rebuild di script/beat sheet)
+→ **Produzione asset** (i format shell bancati in `03_Ad_Spy/_scratch/` sono la reference bank OBBLIGATORIA di `24_static_ads` — niente static senza di essa)
+→ **Copy** (lo swipe file `03_Ad_Spy/` + teardown video alimentano `28_meta_copy`, analisi pattern/gap/hook)

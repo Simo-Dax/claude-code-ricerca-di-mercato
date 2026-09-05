@@ -15,8 +15,8 @@ Distinzioni obbligatorie, altrimenti si duplica lavoro:
 
 | Skill | Unità | Serve a |
 |---|---|---|
-| `48_segment_pain_prioritization` | **Segmento** = contesto + trigger | Decidere chi targettizzare (strategia, SA4) |
-| `63_persona_stack` (questa) | **Persona** = psicografia | Decidere a chi parla ogni creative e con quanto budget (SA5/SA6) |
+| `48_segment_pain_prioritization` | **Segmento** = contesto + trigger | Decidere chi targettizzare (strategia) |
+| `63_persona_stack` (questa) | **Persona** = psicografia | Decidere a chi parla ogni creative e con quanto budget (concept e produzione) |
 | `18` Fase 3 Foundation Pack | **Avatar singolo** | Starter d'offerta |
 | `22_character_creator` | **Personaggio visivo** | Volti/immagini, nessuna psicografia |
 
@@ -132,13 +132,13 @@ Sapere chi è non basta: serve sapere **su cosa si ferma già** mentre scrolla.
 3. Per ogni reference annota: tipo di creator · produzione alta o girato a telefono · **dove** è girato (bagno, cucina, auto, ufficio) · talking head o montato a stacchi · luce · durata dell'hook.
 4. Salva i 3-5 migliori esempi **dentro il doc della persona**, con link.
 
-Output: quando SA6 produce le creative per questa persona non indovina l'estetica — la ricalca da ciò che la persona già guarda di sua iniziativa. Alimenta direttamente `57_ugc_studio` e `58_ugc_blueprint`.
+Output: quando la produzione creativa lavora su questa persona non indovina l'estetica — la ricalca da ciò che la persona già guarda di sua iniziativa. Alimenta direttamente `57_ugc_studio` e `58_ugc_blueprint`.
 
 ---
 
 ## STEP 4 — Ranking e allocazione creativa
 
-Una tabella, punteggio 1-10 per riga. Usa i numeri veri di SA3/SA9 se disponibili; altrimenti stima e **marcalo come stima**.
+Una tabella, punteggio 1-10 per riga. Usa i numeri veri del brand (margine, LTV, retention) se disponibili; altrimenti stima e **marcalo come stima**.
 
 | Persona | Contributo a fatturato | LTV | CAC (10 = più basso) | Priorità strategica | Media | % sprint creativo |
 |---|---|---|---|---|---|---|
@@ -150,7 +150,7 @@ La media dà il peso: quanta parte del prossimo sprint creativo va a ciascuna pe
 
 **Regola di test con intenzione:** ogni ad prodotta viene taggata con la persona che serve **e con l'ipotesi** ("vincerà perché…"). A fine sprint si chiude il loop con un report — cosa ha funzionato, cosa no — e si aggiornano i pesi. Senza il tag e l'ipotesi, il test non insegna niente: è spaghetti al muro.
 
-Questa tabella è un vincolo esplicito per **SA5** (quanti concept per persona) e **SA6** (quante creative).
+Questa tabella è un vincolo esplicito per i **concept** (quanti per persona) e per la **produzione** (quante creative).
 
 ---
 
@@ -173,7 +173,7 @@ Delta positivo grande = stai spendendo su una persona che non compra: candidato 
 
 ## Output
 
-**A) `intermediate/persona_stack.md`** — testo strutturato per gli agenti a valle (`33`, `48`, SA4, SA5, SA7).
+**A) `intermediate/persona_stack.md`** — testo strutturato per le fasi a valle (`33`, `48`, strategia, concept, copy).
 **B) `01_VOC_Research/personas-<product>-<data>.html`** — documento self-contained, CSS inline, una scheda per persona con i 10 blocchi, il content diet e la tabella di allocazione. Zero dipendenze esterne.
 **C) blocco `personas` in `market-data.json`** — una riga per persona con `id`, `name`, `alloc`, `confidence`, `trigger`, `pain`, `desire`, `objection`, `quote`, `src` (schema completo in `.claude/agents/sa2_market_research.md`). È ciò che alimenta hub e artifact senza rimappature.
 
@@ -185,14 +185,14 @@ Il persona doc **non è un one-shot**. Ogni nuova recensione, commento sotto un'
 - Nessuna persona senza verbatim. Una persona senza citazioni è un'ipotesi: etichettala così.
 - Niente demografiche spacciate per persona, niente contesti d'acquisto spacciati per persona.
 - Confidence check obbligatorio su ogni sezione.
-- Le "copy phrases" sono verbatim del mercato, non copy nostro. Il copy lo scrive SA7.
+- Le "copy phrases" sono verbatim del mercato, non copy nostro. Il copy si scrive dopo, nella fase di copywriting.
 
 ## Definition of done
 - [ ] 3-5 persona, ognuna con i 10 blocchi popolati
 - [ ] Ogni persona ancorata ad almeno un verbatim con fonte; quelle senza sono etichettate `ipotesi`
 - [ ] Confidence check per sezione, con il livello dichiarato (alta / media / bassa)
 - [ ] Allocazione % del budget creativo che **somma a 100**, con il razionale dell'allocazione
-- [ ] Dichiarato esplicitamente su cosa l'allocazione **non** è ottimizzata (se SA3 non è girato: non è CAC/LTV-driven — va detto)
+- [ ] Dichiarato esplicitamente su cosa l'allocazione **non** è ottimizzata (senza dati economici del brand: non è CAC/LTV-driven — va detto)
 - [ ] Persona che non vanno mai fuse dichiarate come tali, con il motivo
 - [ ] Geo o segmenti non validati dichiarati come gap
 - [ ] `market-data.json` parsabile con il blocco `personas` popolato
@@ -200,4 +200,4 @@ Il persona doc **non è un one-shot**. Ogni nuova recensione, commento sotto un'
 ## Handoff
 → **`48_segment_pain_prioritization`** (le persona informano gli attributi della matrice attributi×pain)
 → **`33_insight_synthesis`** (dim 4 Key Segment, dim 5 Pain, dim 7 Obiezioni + il confidence check confluisce nel GATE 1)
-→ **SA5** (`53_ad_angles`: un angolo per persona) · **SA7** (`54_headline_bank`: le copy phrases sono il seed) · **SA6** (content diet = reference estetica)
+→ **concept creativi** (`53_ad_angles`: un angolo per persona) · **copy** (`54_headline_bank`: le copy phrases sono il seed) · **produzione asset** (content diet = reference estetica)

@@ -1,7 +1,7 @@
 # Competitor Review Mining — Gap Positivo/Negativo (market gap finder)
 
 **Fase:** research strategica. Gira con SA1∥SA2, alimenta `33_insight_synthesis`.
-**Agente:** SA1 (competitor) / SA2 (market) — input alla strategia SA4.
+**Agente:** SA1 (competitor) / SA2 (market) — input alla strategia.
 **Input:** lista competitor (da SA1 `03_Ad_Spy/competitors.json` o brief) + categoria prodotto
 **Output:** `intermediate/competitor_review_gap.md` (gap map) → feed a `33` (dim 2 Alternative, dim 5 Pain, white space) e a `48_segment_pain_prioritization`
 **Tool dati:** Apify REST diretto (review scraper: Amazon, Trustpilot, G2, App Store/Play, Google reviews) — stesso pattern di `19_ad_spy` (token header `Authorization: Bearer`, mai in URL, no MCP)

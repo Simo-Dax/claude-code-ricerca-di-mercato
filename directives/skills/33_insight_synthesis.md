@@ -1,6 +1,6 @@
 # Insight Synthesis — 8 Building Block + Proposta (+ Gate Umano)
 
-**Fase:** ponte tra Research (SA1+SA2) e Strategy (SA4). Gira dopo SA1∥SA2, prima di SA3/SA4.
+**Fase:** ponte tra la ricerca (SA1+SA2) e la strategia. Gira dopo SA1∥SA2 ed è l'ultimo passo del kit.
 **Input:** `intermediate/sa1_competitor_landscape.md` + `intermediate/sa2_market_insights.md` + `01_VOC_Research/` + `context/brand/`
 **Output:** `output/{brand}_{campaign}_{date}/intermediate/insight.md` (con sezione finale di validazione umana obbligatoria). Vedi Convenzione Output in `claude.md`.
 **Origine:** internalizzato da `insight-synthesizer` del Marketing Strategist (metodo Learnn fase 2). Reference: `execution/strategy-method/`.
@@ -22,7 +22,7 @@ Due cose, in quest'ordine:
 2. La **proposta** che ne discende — Value Proposition, USP, reason why, trigger event, offerta, tone of voice. I building block sono la diagnosi; la proposta è ciò che l'umano valida al GATE 1.
 
 I tre livelli nel nostro sistema:
-- **Quantitativo** → `first_party_quant.md` (da `38_first_party_data_analysis`, dati reali cliente) + benchmark SA2 + storico SA8 + financial SA3
+- **Quantitativo** → `first_party_quant.md` (da `38_first_party_data_analysis`, dati reali cliente) + benchmark SA2 + storico dell'account + dati economici del brand
 - **Qualitativo** → VOC (`18_voc_research`) + `first_party_qual.md` (da `38`, recensioni/ticket/survey propri) + ad spy (`19_ad_spy`) + UGC (`20_ugc_scraper`) + **gap recensioni competitor (`47_competitor_review_mining`)**
 - **Macro** → ricerca di mercato SA2 + competitor landscape SA1
 - **Pain & segmento** → **`48_segment_pain_prioritization`** (pain matrix frequency×frustration, matrice attributi×pain, segmenti per contesto+trigger, prioritizzazione) — alimenta dim 4 e 5
@@ -73,7 +73,7 @@ Fonte: [...]
 ### 8. Trigger point
 **L'evento concreto** che trasforma un pain latente in ricerca attiva. Non uno stato ("è frustrato"), un fatto datato ("ha aperto la terza sede", "il gestionale è andato giù nel weekend di punta", "il socio se n'è andato").
 Dallo switch trigger di SA2 (Fase 1 JTBD) + dai racconti di switch nel corpus VOC. Per ogni trigger: quanto è frequente nel corpus, quanto anticipo dà (settimane/mesi prima dell'acquisto), e **su quale canale è intercettabile** (Meta = interruzione su trigger latente, Google = intento già formato).
-È il building block che dice a SA4 *quando* parlare e a SA7 *con quale apertura*.
+È il building block che dice alla strategia *quando* parlare e al copy *con quale apertura*.
 Fonte: [...]
 ```
 
@@ -139,7 +139,7 @@ Le 3-5 decisioni più importanti e incerte che richiedono il tuo giudizio di mer
 Poi l'orchestrator mostra il riepilogo degli 8 building block + la proposta e chiede:
 > "Confermi questi insight o vuoi correggere/scartare qualcosa prima di costruire la strategia?"
 
-Applica le correzioni umane riscrivendo il file. **Procedi a SA3/SA4 solo dopo OK esplicito.**
+Applica le correzioni umane riscrivendo il file. **Passa alla fase strategica solo dopo OK esplicito.**
 
 ---
 
@@ -155,4 +155,4 @@ Applica le correzioni umane riscrivendo il file. **Procedi a SA3/SA4 solo dopo O
 - [ ] Sezione `⚠️ DA VALIDARE DALL'UMANO` con 3-5 decisioni reali (non retoriche)
 
 ## Handoff
-`intermediate/insight.md` (validato) → **SA3** (i pain/segment informano i target finanziari) e **SA4 / `32_brand_strategy`** (la VP e l'offerta discendono da questi insight). Niente strategia senza insight validati.
+`intermediate/insight.md` (validato) → **pianificazione economica** (i pain/segment informano i target finanziari) e **strategia di marca** (`32_brand_strategy`: la VP e l'offerta discendono da questi insight). Niente strategia senza insight validati.

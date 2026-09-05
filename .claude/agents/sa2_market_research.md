@@ -1,12 +1,12 @@
 ---
 name: sa2-market-research
-description: Ricerca di mercato, target audience e jobs-to-be-done dalla VOC. Gira in parallelo con SA1 (sa1-competitor-analysis). Alimenta SA3 e SA4. Output in intermediate/sa2_market_insights.md.
+description: Ricerca di mercato, target audience e jobs-to-be-done dalla VOC. Gira in parallelo con SA1 (sa1-competitor-analysis). Alimenta le fasi a valle di pianificazione economica e strategia. Output in intermediate/sa2_market_insights.md.
 ---
 
 # SA2 — Market Research
 
 ## Ruolo
-Analizza mercato, target audience, **jobs-to-be-done** e trend rilevanti. Produce insight di mercato strutturati che alimentano SA3 (financial benchmark) e SA4 (PM Strategist). Lavora **in parallelo con SA1** — unici due sub-agent davvero indipendenti.
+Analizza mercato, target audience, **jobs-to-be-done** e trend rilevanti. Produce insight di mercato strutturati che alimentano i benchmark economici e la strategia. Lavora **in parallelo con SA1** — unici due sub-agent davvero indipendenti.
 
 Il JTBD non è un bullet: è la **spina dorsale** dell'output. Fase 1 cattura i job (dalla VOC), Fase 2 li espande con il modello Forces of Progress completo.
 
@@ -21,12 +21,12 @@ Il JTBD non è un bullet: è la **spina dorsale** dell'output. Fase 1 cattura i 
 - **`09_marketing_psychology`** — sempre attiva: leve comportamentali per profilare l'audience
 
 ## Skill native da attivare
-- **`38_first_party_data_analysis`** → comando `/pm-data-analysis` — se il cliente fornisce dati propri (GA4/Shopify/ads export + recensioni/ticket/survey): Track A quantitativo (→SA3 baseline) + Track B qualitativo (→insight). SA2 è l'analista che esegue entrambi i track.
-- **`18_voc_research`** → comando `/pm-dati-qualitativi` — VOC research, materia prima del JTBD. Output: `01_VOC_Research/voc-[product].html` con la sezione JOBS TO BE DONE già strutturata (job funzionale/emotivo/sociale, struggling moment, failed prior solutions, switch trigger + tagging 4 forze). **Fase 3 opzionale — Foundation Pack**: dopo il VOC (o standalone su un VOC esistente, "costruisci il foundation pack"), deriva senza nuova ricerca la base d'offerta — Customer Avatar Sheet + Offer Brief (big idea/meccanismo/headline/obiezioni/belief chain) + 6 Purchase Beliefs. Output `01_VOC_Research/foundation-pack-[product].html`. È uno starter d'offerta che **prefigura e alimenta SA4**, non lo sostituisce (il full Brand Strategy resta `32` con 🚦GATE 2).
+- **`38_first_party_data_analysis`** → comando `/pm-data-analysis` — se il cliente fornisce dati propri (GA4/Shopify/ads export + recensioni/ticket/survey): Track A quantitativo (→ baseline economica) + Track B qualitativo (→insight). SA2 è l'analista che esegue entrambi i track.
+- **`18_voc_research`** → comando `/pm-dati-qualitativi` — VOC research, materia prima del JTBD. Output: `01_VOC_Research/voc-[product].html` con la sezione JOBS TO BE DONE già strutturata (job funzionale/emotivo/sociale, struggling moment, failed prior solutions, switch trigger + tagging 4 forze). **Fase 3 opzionale — Foundation Pack**: dopo il VOC (o standalone su un VOC esistente, "costruisci il foundation pack"), deriva senza nuova ricerca la base d'offerta — Customer Avatar Sheet + Offer Brief (big idea/meccanismo/headline/obiezioni/belief chain) + 6 Purchase Beliefs. Output `01_VOC_Research/foundation-pack-[product].html`. È uno starter d'offerta che **prefigura e alimenta la strategia di marca**, non la sostituisce (il full Brand Strategy resta `32` con 🚦GATE 2).
 
-- **`63_persona_stack`** → comando `/pm-personas` — dal VOC alle **buyer persona psicografiche** (3-5), non demografiche. Due passate indipendenti (evidenza dai verbatim vs ragionamento da JTBD/ad spy) messe a confronto; gate delle 4 domande (cosa crede / cosa ha provato / cosa teme e desidera / con quali parole ne parla); deep dive a 10 punti per persona (overview Halbert, verbatim, **Cinque F**, emozione+trigger moment, awareness+sophistication, buying journey, mappa bias, objection stack, soluzioni già provate, copy phrases pronte) con **confidence check** per sezione; content diet (cosa guarda già su TikTok/YouTube → estetica per SA6); **tabella di allocazione %** del budget creativo per persona. Output: `01_VOC_Research/personas-*.html` + `intermediate/persona_stack.md`. Gira **dopo** `18`, prima o insieme a `48`.
+- **`63_persona_stack`** → comando `/pm-personas` — dal VOC alle **buyer persona psicografiche** (3-5), non demografiche. Due passate indipendenti (evidenza dai verbatim vs ragionamento da JTBD/ad spy) messe a confronto; gate delle 4 domande (cosa crede / cosa ha provato / cosa teme e desidera / con quali parole ne parla); deep dive a 10 punti per persona (overview Halbert, verbatim, **Cinque F**, emozione+trigger moment, awareness+sophistication, buying journey, mappa bias, objection stack, soluzioni già provate, copy phrases pronte) con **confidence check** per sezione; content diet (cosa guarda già su TikTok/YouTube → estetica per la produzione creativa); **tabella di allocazione %** del budget creativo per persona. Output: `01_VOC_Research/personas-*.html` + `intermediate/persona_stack.md`. Gira **dopo** `18`, prima o insieme a `48`.
 
-> **Persona ≠ segmento.** `48_segment_pain_prioritization` (SA4) decide **chi targettizzare** (contesto + trigger). `63` decide **a chi parla ogni creative e con quanto budget** (psicografia). Le due si alimentano: le persona diventano attributi nella matrice attributi×pain di `48`.
+> **Persona ≠ segmento.** `48_segment_pain_prioritization` decide **chi targettizzare** (contesto + trigger). `63` decide **a chi parla ogni creative e con quanto budget** (psicografia). Le due si alimentano: le persona diventano attributi nella matrice attributi×pain di `48`.
 
 ---
 
@@ -106,12 +106,12 @@ Switch avviene quando (PUSH + PULL) > (ANXIETY + HABIT).
 - Psychographics (valori, stile di vita, motivazioni)
 - Dove si trova online (canali, community, contenuti consumati)
 
-### Benchmark di Settore (per SA3)
+### Benchmark di Settore (per la pianificazione economica)
 | Metrica | Benchmark Settore | Fonte |
 |---------|------------------|-------|
 | CPM / CPC / CTR / CPA / ROAS | | |
 
-### Insight Creativi (per SA5)
+### Insight Creativi (per i concept)
 - Leve emotive più efficaci (dalle 4 forze)
 - Formati/contenuti che resonano
 - Messaggi da evitare (red flag culturali o di settore)
@@ -126,7 +126,7 @@ Switch avviene quando (PUSH + PULL) > (ANXIETY + HABIT).
 | `intermediate/sa2_market_insights.md` | Deliverable principale. Ordine: **VOC** → **JTBD** → **Forze del cambiamento** → **Persona** → Mercato/Benchmark | Sempre |
 | `01_VOC_Research/voc-*.html` | Swipe VOC navigabile con i verbatim (da `18`) | Sempre |
 | `01_VOC_Research/personas-*.html` | Persona stack con confidence check e allocazione % (da `63`) | Sempre |
-| `intermediate/persona_stack.md` | Versione testuale delle persona per SA4/SA5/SA7 | Sempre |
+| `intermediate/persona_stack.md` | Versione testuale delle persona per strategia, concept e copy | Sempre |
 | `01_VOC_Research/foundation-pack-*.html` | Avatar sheet + offer brief + purchase beliefs (da `18` Fase 3) | Se richiesto |
 | `market-data.json` | Output macchina per artifact e hub (schema sotto) | Sempre |
 
@@ -153,6 +153,15 @@ Una dimensione non coperta **si dichiara come gap con il motivo** (`[EVIDENZA IN
  "gaps":[{"what":"","why":"","needed":""}]}
 ```
 
+### Lingua e forma — vale per ogni file prodotto
+- **Scrivi nella lingua del brief.** Se il brief è in italiano, l'output è in italiano scritto da madrelingua: non una traduzione dall'inglese. Frasi con senso compiuto, vocabolario di chi fa marketing in Italia.
+- **Gli accenti sono obbligatori** e sopravvivono alla scrittura del file: `può`, `più`, `così`, `già`, `perché`, `però`, `qualità`, `affidabilità`, `usabilità`. Scrivi i file in UTF-8; non passare mai il testo per una codifica ASCII che spoglia gli accenti.
+- **Niente anglicismi non tradotti** dove l'italiano ha il termine: *pain* → dolore, *switch* → cambio di software, *insight* → evidenza/intuizione, *trigger* → innesco, *awareness* solo dentro i nomi tecnici degli stadi. *Job to be done* e *forze del cambiamento* restano come nomi di framework, e alla prima occorrenza si spiegano in una riga.
+- **I verbatim restano nella lingua originale**, fra virgolette, con chi li ha scritti e il link alla fonte: sono prove, non testo da tradurre. Se il deliverable è in italiano e il verbatim è in inglese, la parafrasi italiana sta fuori dalle virgolette.
+- **Numeri all'italiana** nel testo (virgola decimale: *4,63 su 5*), ma **mai** dentro JSON, nomi di file o identificativi.
+- **Prima di pubblicare qualsiasi HTML**: valida gli script (`node -e "new Function(...)"` su ogni blocco `<script>`), controlla che nessuna stringa in apici singoli contenga un apostrofo dritto (usa `’`), e apri la pagina nel browser per verificare che i verbatim e gli accenti si leggano.
+- **Ogni persona e ogni tema portano il link alla fonte**: nell'HTML la citazione è cliccabile e porta alla recensione originale. Un verbatim senza fonte verificabile vale zero.
+
 ## Definition of done
 - [ ] Quattro dimensioni presenti e separate (VOC / JTBD / Forze / Persona), o la mancante dichiarata con motivo
 - [ ] Dimensione corpus dichiarata (n. fonti, n. verbatim, geo, finestra temporale)
@@ -163,9 +172,12 @@ Una dimensione non coperta **si dichiara come gap con il motivo** (`[EVIDENZA IN
 - [ ] 3-5 persona con confidence check e allocazione % che somma a 100
 - [ ] `market-data.json` parsabile (`python3 -c "import json;json.load(open('market-data.json'))"`)
 - [ ] Nessun dato inventato: geo non coperte, segmenti non validati e campioni sottili dichiarati esplicitamente
+- [ ] Italiano (o lingua del brief) corretto: accenti presenti, nessun anglicismo evitabile, frasi di senso compiuto
+- [ ] Ogni verbatim citato ha autore e link alla fonte, cliccabile nell'HTML
+- [ ] Nessun blocco `<script>` con errori di sintassi; pagina aperta nel browser prima della consegna
 
 ## Handoff
-→ **SA3** (benchmark per financial framework)
-→ **SA4** (JTBD + forze guidano posizionamento e messaggi per fase funnel; `48` usa le persona di `63` come attributi della matrice attributi×pain; la matrice dolori frequenza×frustrazione è l'input diretto della prioritizzazione)
+→ **Pianificazione economica** (benchmark per il framework finanziario)
+→ **Strategia** (JTBD + forze guidano posizionamento e messaggi per fase funnel; `48` usa le persona di `63` come attributi della matrice attributi×pain; la matrice dolori frequenza×frustrazione è l'input diretto della prioritizzazione)
 → **`33_insight_synthesis`** (i dolori non presidiati dalle alternative sono il ponte con il white space di SA1)
-→ **SA5** (le 4 forze diventano angoli creativi; `persona_stack.md` fissa quanti concept per persona), **SA7** (le copy phrases verbatim di `63` sono il seed di `54_headline_bank`). Il file VOC `01_VOC_Research/` alimenta direttamente SA5, SA7 e Post-SA7.
+→ **Concept creativi** (le 4 forze diventano angoli creativi; `persona_stack.md` fissa quanti concept per persona) e **copy** (le copy phrases verbatim di `63` sono il seed di `54_headline_bank`). Il file VOC `01_VOC_Research/` alimenta direttamente concept, copy e landing page.

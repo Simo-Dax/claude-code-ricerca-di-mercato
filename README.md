@@ -49,7 +49,7 @@ Due sub-agent, undici comandi, zero dipendenze da plugin di terzi.
 
 ```
 .claude/agents/          SA1 competitor + SA2 market research — i due system prompt
-.claude/agents/_template/ gli altri 7 agenti: template vuoto + istruzioni per aggiungerli
+.claude/agents/_template/ lo scheletro per scrivere un tuo agente
 .claude/commands/        i comandi /pm-* che lanciano le skill
 directives/skills/       le procedure vere: una cartella o un file per skill
 context/brand/           chi sei: business profile, tono di voce (da compilare)
@@ -62,8 +62,9 @@ TOOLS.md                 tutti i tool usati dagli agenti, con costo e alternativ
 .mcp.json.example        gli MCP da configurare — copialo in .mcp.json e metti le tue chiavi
 ```
 
-Il kit contiene **due dei nove agenti** del sistema completo: il ramo ricerca. Gli altri sette
-sono cartelle template vuote in `.claude/agents/_template/`, con lo scheletro per scriverli.
+Il kit è **solo il ramo ricerca**: due agenti, SA1 competitor e SA2 mercato. Finisce dove
+finisce la ricerca — con gli insight validati da te. Se vuoi aggiungere un tuo agente per i
+passi successivi, in `.claude/agents/_template/` c'è lo scheletro con frontmatter e SOP.
 
 ---
 

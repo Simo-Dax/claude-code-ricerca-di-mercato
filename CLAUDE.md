@@ -4,7 +4,7 @@ Sistema multi-agent per la **fase di ricerca** del performance marketing: dalla 
 
 Agnostico rispetto al brand: il contesto specifico vive in `context/brand/` e `context/campaign/`.
 
-> Questo kit è il ramo *research* di un sistema più ampio (9 sub-agent). Qui trovi i due agenti che fanno la ricerca (SA1 competitor, SA2 mercato) e le skill che orchestrano. Gli agenti a valle — strategia, copy, produzione asset — non sono inclusi.
+> Questo kit copre la **ricerca**, e si ferma lì: due agenti — SA1 competitor e SA2 mercato — con le skill che orchestrano. Finisce con gli insight validati da te, che sono l'input di qualunque cosa venga dopo (strategia, copy, creatività).
 
 ---
 
@@ -14,6 +14,8 @@ Agnostico rispetto al brand: il contesto specifico vive in `context/brand/` e `c
 2. **Ogni claim ha una fonte.** Se un'affermazione non è supportata dai dati, va marcata `ipotesi da validare`.
 3. **Verbatim o niente.** Le citazioni dei clienti si riportano esatte: slang, maiuscole, errori inclusi. Zero parafrasi.
 4. **Definisci i criteri di successo. Verifica prima di dichiarare fatto.**
+5. **Scrivi nella lingua del brief, come un madrelingua.** Se il brief è in italiano, l'output è italiano vero: accenti al loro posto (`può`, `più`, `perché`, `qualità`), niente anglicismi dove esiste il termine italiano, frasi di senso compiuto per chi fa marketing. I file si scrivono in UTF-8: mai passare il testo per una codifica che spoglia gli accenti. I **verbatim restano nella lingua originale**, fra virgolette e con la fonte.
+6. **Un deliverable visuale mostra le prove.** Una dashboard di annunci porta le immagini e i fotogrammi dei video **incorporati** (`data:` URI: le CDN pubblicitarie sono bloccate e scadono), miniature cliccabili che si aprono nel rapporto d'aspetto reale, e **sempre** il link alla libreria ufficiale. Prima di consegnare un HTML: valida gli script, controlla gli apostrofi dentro le stringhe, e apri la pagina nel browser.
 
 ---
 

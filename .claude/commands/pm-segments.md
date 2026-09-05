@@ -1,5 +1,5 @@
 ---
-description: Segment & pain prioritization (acquisition) — pain matrix frequency×frustration vs alternative, matrice attributi×pain, segmenti per contesto+trigger, prioritizzazione 3 fattori (profittabilità/accesso/TAM). Skill 48 (SA4).
+description: Segment & pain prioritization (acquisition) — pain matrix frequency×frustration vs alternative, matrice attributi×pain, segmenti per contesto+trigger, prioritizzazione 3 fattori (profittabilità/accesso/TAM). Skill 48.
 argument-hint: [brand / categoria]
 ---
 

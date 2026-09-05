@@ -1,6 +1,6 @@
-# SA2/SA3 — First-Party Data Analysis (quantitativa + qualitativa)
+# SA2 — First-Party Data Analysis (quantitativa + qualitativa)
 
-**Agente:** SA2 (Research) — alimenta SA3 (Financial) e `33_insight_synthesis`
+**Agente:** SA2 (Research) — alimenta la pianificazione economica e `33_insight_synthesis`
 **Input:** export dati first-party del cliente (in `context/campaign/data/` o cartella fornita)
 **Output:** `output/{brand}_{campaign}_{date}/intermediate/first_party_quant.md` + `.../first_party_qual.md`
 **Origine:** colma il gap "quant/qual analyst" del metodo Learnn (fase 1) sui dati PROPRI del cliente.
@@ -20,7 +20,7 @@ Chiedi all'utente dove sono i file (default `context/campaign/data/`). Inventari
 
 ---
 
-## TRACK A — Analisi QUANTITATIVA (owner: SA2 → alimenta SA3)
+## TRACK A — Analisi QUANTITATIVA (owner: SA2 → alimenta la pianificazione economica)
 
 Estrai SOLO da numeri presenti nei file. Cita sempre il file fonte. Per ogni dato mancante scrivi "non disponibile" + quale export servirebbe.
 
@@ -33,11 +33,11 @@ Estrai SOLO da numeri presenti nei file. Cita sempre il file fonte. Per ogni dat
 7. **Lettura strategica** — cosa significano i pattern per il marketing (non solo numeri).
 
 Output → `intermediate/first_party_quant.md` con tabelle recap + "Implicazioni strategiche".
-**→ SA3** usa questi numeri reali (AOV, margin, CRR, PF, cohorts) come **baseline del financial framework** al posto delle stime del brief. **→ 33** li usa come fonte "quantitativa" degli 8 building block.
+**→ Il framework finanziario** usa questi numeri reali (AOV, margin, CRR, PF, cohorts) come **baseline** al posto delle stime del brief. **→ 33** li usa come fonte "quantitativa" degli 8 building block.
 
 ---
 
-## TRACK B — Analisi QUALITATIVA (owner: SA2 → alimenta 33 + SA5/SA7)
+## TRACK B — Analisi QUALITATIVA (owner: SA2 → alimenta 33, i concept e il copy)
 
 Da recensioni/ticket/chat/survey PROPRI del cliente (distinti dalla VOC pubblica):
 1. **Sentiment** — % positivo/neutro/negativo, tono prevalente, lessico dominante (parole reali ricorrenti).
@@ -47,13 +47,13 @@ Da recensioni/ticket/chat/survey PROPRI del cliente (distinti dalla VOC pubblica
 
 Regole: usa le **parole reali** dei clienti, non parafrasi. Non gonfiare il sentiment se i dati sono pochi (dillo).
 
-Output → `intermediate/first_party_qual.md`. **→ 33** come fonte "qualitativa". **→ 18_voc_research** si integra (VOC pubblica + qual interna = mappa emotiva completa). **→ SA5/SA7** angoli + citazioni reali.
+Output → `intermediate/first_party_qual.md`. **→ 33** come fonte "qualitativa". **→ 18_voc_research** si integra (VOC pubblica + qual interna = mappa emotiva completa). **→ Concept e copy**: angoli + citazioni reali.
 
 ---
 
 ## Chi fa cosa (mapping)
 - **SA2** esegue entrambi i track (è l'agente di ricerca/analista). Research SA2 = mercato pubblico + `18_voc` (qual pubblica) + `38` (quant + qual first-party).
-- **SA3** consuma `first_party_quant.md` come baseline finanziaria reale.
+- **La pianificazione economica** consuma `first_party_quant.md` come baseline finanziaria reale.
 - **`33_insight_synthesis`** unisce quant (38A + benchmark) + qual (38B + 18 VOC) + macro (SA1+SA2 mercato) → 8 building block con fonte citata.
 
 ## Regole critiche

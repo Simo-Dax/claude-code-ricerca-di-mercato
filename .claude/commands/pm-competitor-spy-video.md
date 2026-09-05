@@ -16,4 +16,4 @@ Argomenti: $ARGUMENTS
 4. Pages scraper per validare il Page ID → scraping `media_type=all` + filtro video in post → download mp4 → trascrizione fal.ai Whisper → frame ffmpeg → teardown agenti paralleli (model sonnet, batch 4).
 5. Output: `03_Ad_Spy/<slug>-video/video-teardown-*.html` + `.json`.
 
-Pura competitor intelligence — non genera ad. Il teardown alimenta SA5 (`/pm-competitor-rebuild`) e SA7 per pattern/hook di script.
+Pura competitor intelligence — non genera ad. Il teardown alimenta la fase creativa (`/pm-competitor-rebuild`) e il copy, per pattern e hook di script.

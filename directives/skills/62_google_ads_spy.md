@@ -162,9 +162,9 @@ Le tre righe finali entrano dritte nella messaging matrix di SA1 Fase 3 e nella 
 
 ## Handoff
 → **SA1** Fase 2/3 (schede competitor + messaging matrix cross-canale) e Fase 5 (white space)
-→ **SA4** (i claim esposti in Search sono il benchmark della nostra value proposition)
-→ **SA7** (`12_google_copy`: le headline PROVEN dei competitor sono il baseline da battere; `28_meta_copy` per il delta di canale)
-→ **SA5** (`23_competitor_rebuild` sui video YouTube longevi)
+→ **Strategia** (i claim esposti in Search sono il benchmark della nostra value proposition)
+→ **Copy** (`12_google_copy`: le headline PROVEN dei competitor sono il baseline da battere; `28_meta_copy` per il delta di canale)
+→ **Concept creativi** (`23_competitor_rebuild` sui video YouTube longevi)
 
 ---
 
